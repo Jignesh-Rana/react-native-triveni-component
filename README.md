@@ -12,11 +12,11 @@ npm install react-native-triveni-component
 
 
 ```js
-import { multiply } from 'react-native-triveni-component';
+import { CustomButton } from 'react-native-triveni-component';
 
 // ...
 
-const result = await multiply(3, 7);
+<CustomButton title="Submit"/>
 ```
 
 

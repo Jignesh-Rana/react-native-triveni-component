@@ -1,3 +1,3 @@
-export function multiply(a: number, b: number): number {
-  return a * b;
-}
+export * from './Config';
+export { default as CustomButton } from './CustomButton';
+export * from './customHooks/index';
