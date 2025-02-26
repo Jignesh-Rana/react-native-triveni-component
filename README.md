@@ -26,7 +26,7 @@ Properties used to customize the rendering:
 | Name              | Type   | Description                                                                                                          |
 |-------------------|--------|----------------------------------------------------------------------------------------------------------------------|
 | **title** | `string` | To define button title |
-| **variant**          | `default | border` | By default select default, select border display border type button. |
+| **variant** | `enum` | default | border By default select default, select border display border type button. |
 
 
 ## Contributing
