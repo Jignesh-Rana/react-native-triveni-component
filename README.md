@@ -23,10 +23,10 @@ import { CustomButton } from 'react-native-triveni-component';
 
 Properties used to customize the rendering:
 
-| Name              | Type   | Description                                                                                                          |
-|-------------------|--------|----------------------------------------------------------------------------------------------------------------------|
-| **title** | `string` | To define button title |
-| **variant** | `enum` | default | border By default select default, select border display border type button. |
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **title** | - |`string` | To define button title |
+| **variant** | default | `enum` | `Display the button as per the variant, default and border` |
 
 
 ## Contributing
