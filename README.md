@@ -20,6 +20,7 @@ npm install react-native-device-info
 npx pod-install
 ```
 
+
 ## CustomButton Component
 
 ```js
@@ -43,6 +44,7 @@ Properties used to customize the rendering:
 | **btnTitleStyle** | - | `object` | Add additional button title style |
 | **style** | - | `object` | Add additional button style |
 | **onPress** | - | `function` | onPress of button |
+
 
 ## CustomText Component
 
