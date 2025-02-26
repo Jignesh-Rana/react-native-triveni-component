@@ -31,7 +31,7 @@ import { CustomButton } from 'react-native-triveni-component';
 <CustomButton title="Submit"/>
 ```
 
-# Preview
+### Preview
 ![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/ButtonPreview.png "CustomButton Preview")
 
 Properties used to customize the rendering:
@@ -59,7 +59,7 @@ import { CustomText } from 'react-native-triveni-component';
 <CustomText>Your Text</CustomText>
 ```
 
-# Preview
+### Preview
 ![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/TextPreview.png "CustomText Preview")
 
 Properties used to customize the rendering:
