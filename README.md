@@ -31,6 +31,9 @@ import { CustomButton } from 'react-native-triveni-component';
 <CustomButton title="Submit"/>
 ```
 
+## Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/ButtonPreview.png "CustomButton Preview")
+
 Properties used to customize the rendering:
 
 | Prop              | Default     | Type | Description |
