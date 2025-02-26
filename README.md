@@ -22,6 +22,7 @@ npx pod-install
 
 ## Usage
 
+## CustomButton Component
 
 ```js
 import { CustomButton } from 'react-native-triveni-component';
@@ -30,8 +31,6 @@ import { CustomButton } from 'react-native-triveni-component';
 
 <CustomButton title="Submit"/>
 ```
-
-## CustomButton Component
 
 Properties used to customize the rendering:
 
@@ -47,6 +46,8 @@ Properties used to customize the rendering:
 | **style** | - | `object` | Add additional button style |
 | **onPress** | - | `function` | onPress of button |
 
+## CustomText Component
+
 ```js
 import { CustomText } from 'react-native-triveni-component';
 
@@ -54,8 +55,6 @@ import { CustomText } from 'react-native-triveni-component';
 
 <CustomText>Your Text</CustomText>
 ```
-
-## CustomText Component
 
 Properties used to customize the rendering:
 
