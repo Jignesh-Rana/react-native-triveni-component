@@ -1,6 +1,21 @@
 type ThemeConfig = {
-  fontSizes: Record<string, number>;
-  fontFamily: Record<string, string>;
+  fontSizes: {
+    xxs: number;
+    xs: number;
+    base: number;
+    sm: number;
+    md: number;
+    xl: number;
+    xl2: number;
+    xl3: number;
+    xl4: number;
+  };
+  fontFamily: {
+    Bold: string;
+    SemiBold: string;
+    Medium: string;
+    Regular: string;
+  };
   colors: {
     black: string;
     white: string;
@@ -21,8 +36,8 @@ const defaultConfig: ThemeConfig = {
     md: 18,
     xl: 20,
     xl2: 24,
-    xl4: 40,
-    xl3: 48,
+    xl3: 40,
+    xl4: 48,
   },
   fontFamily: {
     Bold: 'Inter-Bold',
