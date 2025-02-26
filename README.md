@@ -1,6 +1,6 @@
 # react-native-triveni-component
 
-Triveni custom component library
+The `react-native-triveni-component` is a custom component library developed by **Triveni Global Software Services LLP** for React Native applications. This library provides a collection of reusable, high-quality, and customizable UI components to accelerate the development process and maintain consistency across projects.
 
 ## Installation
 
