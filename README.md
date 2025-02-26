@@ -73,6 +73,22 @@ Properties used to customize the rendering:
 | **onPress** | - | `function` | onPress of text component |
 
 
+# Custom Hooks
+
+A custom hook in React is a reusable function that starts with the prefix `use` and lets you encapsulate logic for managing state or side effects. It enables you to extract logic from components and share it across multiple components, making your code cleaner, modular, and easier to maintain.
+
+## useHasNotch
+
+A custom React hook that detects whether the device has a notch (common on modern smartphones). It returns a boolean value (`true` if the device has a notch, `false` otherwise). This can be useful for adjusting UI layouts or spacing to accommodate devices with notches.
+
+```js
+import { useHasNotch } from 'react-native-triveni-component';
+
+// ...
+
+const hasNotch = useHasNotch();
+```
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
