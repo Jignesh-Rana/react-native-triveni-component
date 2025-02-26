@@ -20,8 +20,6 @@ npm install react-native-device-info
 npx pod-install
 ```
 
-## Usage
-
 ## CustomButton Component
 
 ```js
@@ -63,8 +61,6 @@ Properties used to customize the rendering:
 | **size** | base |`enum` | Size of text component like xxs, xs, base, sm, md, xl, xl2, xl3, xl4 |
 | **font** | Regular | `enum` | Custom font of text component like Bold, SemiBold, Medium, Regular |
 | **textColor** | black | `enum` | Color of text component |
-| **icon** | - | `ReactNode` | Display the icon with title |
-| **btnBgColor** | primary | `enum` | background color of button |
 | **style** | - | `object` | Add additional text style |
 | **onPress** | - | `function` | onPress of text component |
 
