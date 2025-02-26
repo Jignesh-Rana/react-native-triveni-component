@@ -48,7 +48,6 @@ Properties used to customize the rendering:
 | **style** | - | `object` | Add additional button style |
 | **onPress** | - | `function` | onPress of button |
 
-
 ## CustomText Component
 
 ```js
@@ -72,6 +71,37 @@ Properties used to customize the rendering:
 | **style** | - | `object` | Add additional text style |
 | **onPress** | - | `function` | onPress of text component |
 
+## CustomInput Component
+
+```js
+import { CustomInput } from 'react-native-triveni-component';
+
+// ...
+
+<CustomInput
+    title='First Name'
+    placeholder='First Name'
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomInput.png "CustomInput Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **title** | undefine |`string` | Input title |
+| **value** | undefine |`string` | The value to show for the text input |
+| **renderLeftIcon** | undefine | `ReactNode` | Render left input icon |
+| **renderRightIcon** | undefine | `ReactNode` | Render right input icon |
+| **renderErrorIcon** | undefine | `ReactNode` | Render error input icon |
+| **errorText** | undefine | `string` | Input error text |
+| **inputContainer** | undefine | `ViewStyle` | Add additional input container style |
+| **mainContainer** | undefine | `ViewStyle` | Add additional main container style |
+| **titleTxtStyle** | undefine | `TextStyle` | Add additional title text style |
+| **style** | undefine | `TextStyle` | Add additional input style |
+| **onChangeText** | undefine | `function` | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
 
 # Custom Hooks
 

@@ -1,5 +1,9 @@
 import { View, StyleSheet } from 'react-native';
-import { configureTheme, CustomButton } from 'react-native-triveni-component';
+import {
+  configureTheme,
+  CustomButton,
+  CustomInput,
+} from 'react-native-triveni-component';
 
 // Configure fonts, sizes, and colors only once
 configureTheme({
@@ -27,12 +31,14 @@ configureTheme({
     primary: '#0053FF',
     secondPrimary: '#001644',
     gray: '#7C7C7C',
+    error: '#FF0000',
   },
 });
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <CustomInput title={'First Name'} placeholder={'First Name'} />
       <CustomButton title="Submit" />
     </View>
   );
@@ -43,5 +49,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 20,
   },
 });

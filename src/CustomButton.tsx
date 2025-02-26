@@ -23,7 +23,7 @@ interface CustomButtonProps extends TouchableOpacityProps {
   radius?: 'normal' | 'round' | 'none';
 }
 
-const getStyles = (config: ReturnType<typeof getCustomThemeConfig>) =>
+const getStyles = ({ colors }: ReturnType<typeof getCustomThemeConfig>) =>
   StyleSheet.create({
     fixButtonStyle: {
       paddingVertical: 18,
@@ -33,23 +33,23 @@ const getStyles = (config: ReturnType<typeof getCustomThemeConfig>) =>
       alignSelf: 'stretch',
     },
     borderBtnViewStyle: {
-      backgroundColor: config.colors.white,
+      backgroundColor: colors.white,
       borderWidth: 2,
-      borderColor: config.colors.primary,
+      borderColor: colors.primary,
     },
     disabledStyle: {
-      backgroundColor: config.colors.gray,
+      backgroundColor: colors.gray,
       borderWidth: 0,
     },
     fixTxtStyle: {
-      color: config.colors.white,
+      color: colors.white,
       textTransform: 'uppercase',
     },
     textBorderStyle: {
-      color: config.colors.primary,
+      color: colors.primary,
     },
     disabledTextStyle: {
-      color: config.colors.gray,
+      color: colors.gray,
     },
     leftIcon: {
       marginRight: 18,
@@ -80,8 +80,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   isBottomMargin = false,
   ...props
 }) => {
-  const config = getCustomThemeConfig();
-  const styles = getStyles(config);
+  const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
+  const styles = getStyles({ colors, fontFamily, fontSizes });
   const hasNotch = useHasNotch();
 
   return (
@@ -93,7 +93,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         disabled
           ? styles.disabledStyle
           : variant !== 'border'
-            ? { backgroundColor: config.colors[btnBgColor] }
+            ? { backgroundColor: colors[btnBgColor] }
             : {},
         isBottomMargin && !hasNotch && styles.hasNotch,
         style,

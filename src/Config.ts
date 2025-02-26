@@ -23,6 +23,7 @@ type ThemeConfig = {
     primary: string;
     secondPrimary: string;
     disable: string;
+    error: string;
   };
 };
 
@@ -52,6 +53,7 @@ const defaultConfig: ThemeConfig = {
     primary: '',
     secondPrimary: '',
     disable: '',
+    error: '#FF0000',
   },
 };
 
