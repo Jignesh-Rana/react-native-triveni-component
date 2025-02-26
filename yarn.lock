@@ -11866,6 +11866,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+    react-native-device-info: ^14.0.4
   languageName: unknown
   linkType: soft
 

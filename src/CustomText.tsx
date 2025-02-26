@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, type TextProps, type TextStyle } from 'react-native';
-import { getCustomThemConfig } from './Config';
+import { getCustomThemeConfig } from './Config';
 
 export interface CustomTextProps extends TextProps {
-  size?: keyof ReturnType<typeof getCustomThemConfig>['fontSizes'];
-  font?: keyof ReturnType<typeof getCustomThemConfig>['fontFamily'];
-  textColor?: keyof ReturnType<typeof getCustomThemConfig>['colors'];
+  size?: keyof ReturnType<typeof getCustomThemeConfig>['fontSizes'];
+  font?: keyof ReturnType<typeof getCustomThemeConfig>['fontFamily'];
+  textColor?: keyof ReturnType<typeof getCustomThemeConfig>['colors'];
   style?: TextProps['style'];
 }
 
@@ -16,7 +16,7 @@ const CustomText: React.FC<CustomTextProps> = ({
   style,
   ...props
 }) => {
-  const config = getCustomThemConfig();
+  const config = getCustomThemeConfig();
   return (
     <Text
       style={[

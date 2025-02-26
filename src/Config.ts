@@ -1,7 +1,14 @@
 type ThemeConfig = {
   fontSizes: Record<string, number>;
   fontFamily: Record<string, string>;
-  colors: Record<string, string>;
+  colors: {
+    black: string;
+    white: string;
+    gray: string;
+    primary: string;
+    secondPrimary: string;
+    disable: string;
+  };
 };
 
 // CustomTextConfig.ts
@@ -27,15 +34,25 @@ const defaultConfig: ThemeConfig = {
     black: '#000000',
     white: '#FFFFFF',
     gray: '#808080',
+    primary: '',
+    secondPrimary: '',
+    disable: '',
   },
 };
 
 let CustomTextConfig = { ...defaultConfig };
 
 // Allow users to update the configuration
-export const configureThem = (config: Partial<typeof defaultConfig>) => {
-  CustomTextConfig = { ...CustomTextConfig, ...config };
+export const configureTheme = (config: Partial<ThemeConfig>) => {
+  CustomTextConfig = {
+    ...CustomTextConfig,
+    colors: { ...CustomTextConfig.colors, ...config.colors },
+    fontSizes: { ...CustomTextConfig.fontSizes, ...config.fontSizes },
+    fontFamily: { ...CustomTextConfig.fontFamily, ...config.fontFamily },
+  };
 };
 
 // Export the configuration for use in components
-export const getCustomThemConfig = () => CustomTextConfig;
+export const getCustomThemeConfig = (): ThemeConfig => CustomTextConfig;
+
+export type Colors = keyof typeof defaultConfig.colors; // Export color keys for reuse

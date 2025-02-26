@@ -19,6 +19,15 @@ import { CustomButton } from 'react-native-triveni-component';
 <CustomButton title="Submit"/>
 ```
 
+## CustomButton Component
+
+Properties used to customize the rendering:
+
+| Name              | Type   | Description                                                                                                          |
+|-------------------|--------|----------------------------------------------------------------------------------------------------------------------|
+| **title** | `string` | To define button title |
+| **variant**          | `default | border` | By default select default, select border display border type button. |
+
 
 ## Contributing
 
