@@ -24,6 +24,7 @@ type ThemeConfig = {
     secondPrimary: string;
     disable: string;
     error: string;
+    transparent: string;
   };
 };
 
@@ -54,6 +55,7 @@ const defaultConfig: ThemeConfig = {
     secondPrimary: '',
     disable: '',
     error: '#FF0000',
+    transparent: 'rgba(0, 0, 0, 0.1)',
   },
 };
 

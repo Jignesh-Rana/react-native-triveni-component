@@ -3,6 +3,7 @@ import {
   configureTheme,
   CustomButton,
   CustomInput,
+  CustomText,
 } from 'react-native-triveni-component';
 
 // Configure fonts, sizes, and colors only once
@@ -32,14 +33,20 @@ configureTheme({
     secondPrimary: '#001644',
     gray: '#7C7C7C',
     error: '#FF0000',
+    transparent: 'rgba(0, 0, 0, 0.1)',
   },
 });
 
 export default function App() {
   return (
     <View style={styles.container}>
+      {/* <CustomLoader /> */}
+      <CustomText size="xl">Hello World</CustomText>
       <CustomInput title={'First Name'} placeholder={'First Name'} />
       <CustomButton title="Submit" />
+      {/* <CustomImage
+        source={{ uri: "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY" }}
+      /> */}
     </View>
   );
 }

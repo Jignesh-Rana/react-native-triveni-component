@@ -103,6 +103,28 @@ Properties used to customize the rendering:
 | **style** | undefine | `TextStyle` | Add additional input style |
 | **onChangeText** | undefine | `function` | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
 
+## CustomLoader Component
+
+```js
+import { CustomLoader } from 'react-native-triveni-component';
+
+// ...
+
+<CustomLoader size="large"/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomLoader.gif "CustomLoader Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **color** | primary |`enum` | Loader color. |
+| **size** | large |`enum` | Loader size like large, small and number. |
+| **loaderViewStyle** | undefine | `ViewStyle` | Loader view style |
+| **backgroundViewStyle** | undefine | `ViewStyle` | Loader background view style. |
+
 # Custom Hooks
 
 A custom hook in React is a reusable function that starts with the prefix `use` and lets you encapsulate logic for managing state or side effects. It enables you to extract logic from components and share it across multiple components, making your code cleaner, modular, and easier to maintain.

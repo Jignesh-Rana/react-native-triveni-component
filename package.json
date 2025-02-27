@@ -89,7 +89,8 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-device-info": "^14.0.4"
+    "react-native-device-info": "^14.0.4",
+    "react-native-fast-image": "^8.6.3"
   },
   "workspaces": [
     "example"
@@ -186,6 +187,7 @@
   },
   "types": "./lib/typescript/commonjs/src/index.d.ts",
   "dependencies": {
-    "react-native-device-info": "^14.0.4"
+    "react-native-device-info": "^14.0.4",
+    "react-native-fast-image": "^8.6.3"
   }
 }
