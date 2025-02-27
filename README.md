@@ -173,7 +173,7 @@ import { CustomTag } from 'react-native-triveni-component';
 ```
 
 ### Preview
-![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomLoader.gif "CustomLoader Preview")
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomTag.gif "CustomLoader Preview")
 
 Properties used to customize the rendering:
 
