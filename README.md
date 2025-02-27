@@ -103,6 +103,32 @@ Properties used to customize the rendering:
 | **style** | undefine | `TextStyle` | Add additional input style |
 | **onChangeText** | undefine | `function` | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
 
+## CustomImage Component
+
+```js
+import { CustomImage } from 'react-native-triveni-component';
+
+// ...
+
+<CustomImage
+    source={{ uri: "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY" }}
+/>
+<CustomImage
+    source={require('../images/Test.png')}
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomLoader.gif "CustomLoader Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **resizeMode** | undefine |`enum` | contain, cover, stretch and center |
+| **style** | undefine |`ImageStyle` | A React Native style. Supports using borderRadius. |
+| **source** | undefine | `object` | Source for the remote image to load. Remote url to load the image from. e.g. 'https://facebook.github.io/react/img/logo_og.png'. Headers to load the image with. e.g. { Authorization: 'someAuthToken' }. |
+
 ## CustomLoader Component
 
 ```js
@@ -110,7 +136,9 @@ import { CustomLoader } from 'react-native-triveni-component';
 
 // ...
 
+<CustomLoader size="small"/>
 <CustomLoader size="large"/>
+<CustomLoader size={200}/>
 ```
 
 ### Preview
