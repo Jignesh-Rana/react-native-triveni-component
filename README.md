@@ -207,7 +207,7 @@ import { TextWithImage } from 'react-native-triveni-component';
 ```
 
 ### Preview
-![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/TextPreview.png "TextPreview Preview")
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/TextWithImage.png "TextPreview Preview")
 
 Properties used to customize the rendering:
 
