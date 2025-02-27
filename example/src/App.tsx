@@ -4,6 +4,7 @@ import {
   CustomButton,
   CustomInput,
   CustomText,
+  CustomTag,
 } from 'react-native-triveni-component';
 
 // Configure fonts, sizes, and colors only once
@@ -44,6 +45,12 @@ export default function App() {
       <CustomText size="xl">Hello World</CustomText>
       <CustomInput title={'First Name'} placeholder={'First Name'} />
       <CustomButton title="Submit" />
+      <CustomTag
+        title="Custom"
+        tagBackgroundColor="blue"
+        textColor="white"
+        fontSize="md"
+      />
       {/* <CustomImage
         source={{ uri: "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY" }}
       /> */}
@@ -57,5 +64,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
+    gap: 10,
   },
 });

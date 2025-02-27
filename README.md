@@ -157,6 +157,37 @@ Properties used to customize the rendering:
 | **loaderViewStyle** | undefine | `ViewStyle` | Loader view style |
 | **backgroundViewStyle** | undefine | `ViewStyle` | Loader background view style. |
 
+## CustomTag Component
+
+```js
+import { CustomTag } from 'react-native-triveni-component';
+
+// ...
+
+<CustomTag
+    title='Custom'
+    tagBackgroundColor='blue'
+    textColor='white'
+    fontSize='md'
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomLoader.gif "CustomLoader Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **title** | undefine |`string` | Tag title |
+| **height** | 10 |`number` | Height of tag (This is a container with padding acting as height on both sides.) |
+| **width** | 20 | `number` | Width of tag (This is a container with padding acting as width on both sides.). |
+| **tagBackgroundColor** | blue | `string` | Background color of tag. |
+| **tagViewStyle** | undefine | `Object` | Add additional style of customTag. |
+| **fontSize** | base | `enum` | Font size of tagView title. |
+| **fontFamily** | Regular | `enum` | Font family of tagView title. |
+| **textColor** | black | `string` | Color of tag title. |
+
 # Custom Hooks
 
 A custom hook in React is a reusable function that starts with the prefix `use` and lets you encapsulate logic for managing state or side effects. It enables you to extract logic from components and share it across multiple components, making your code cleaner, modular, and easier to maintain.
