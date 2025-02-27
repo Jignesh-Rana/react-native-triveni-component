@@ -5,4 +5,5 @@ export { default as CustomInput } from './CustomInput';
 export { default as CustomLoader } from './CustomLoader';
 export { default as CustomImage } from './CustomImage';
 export { default as CustomTag } from './CustomTag';
+export { default as TextWithImage } from './TextWithImage';
 export * from './customHooks/index';

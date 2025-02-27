@@ -188,6 +188,37 @@ Properties used to customize the rendering:
 | **fontFamily** | Regular | `enum` | Font family of tagView title. |
 | **textColor** | black | `string` | Color of tag title. |
 
+## TextWithImage Component
+
+```js
+import { TextWithImage } from 'react-native-triveni-component';
+
+// ...
+
+<TextWithImage
+    renderLeftView={
+        <Image
+        source={{ uri: "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY" }}
+        style={{ height: 20, width: 20 }}
+        />
+    }
+    title='Hello I am name is Triveni'
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/TextPreview.png "TextPreview Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type | Description |
+|-------------------|-------------|------|-------------|
+| **title** | undefine |`string` | Tag title |
+| **titleStyle** | undefine |`TextStyle` | Add additional style of titleTxt. |
+| **containerStyle** | undefine | `ViewStyle` | Add additional style of main container. |
+| **renderLeftView** | undefine | `ReactNode` | Add any component left side of text. |
+| **renderRightView** | undefine | `ReactNode` | Add any component right side of text. |
+
 # Custom Hooks
 
 A custom hook in React is a reusable function that starts with the prefix `use` and lets you encapsulate logic for managing state or side effects. It enables you to extract logic from components and share it across multiple components, making your code cleaner, modular, and easier to maintain.

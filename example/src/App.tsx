@@ -1,10 +1,11 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import {
   configureTheme,
   CustomButton,
   CustomInput,
   CustomText,
   CustomTag,
+  TextWithImage,
 } from 'react-native-triveni-component';
 
 // Configure fonts, sizes, and colors only once
@@ -51,9 +52,18 @@ export default function App() {
         textColor="white"
         fontSize="md"
       />
-      {/* <CustomImage
-        source={{ uri: "https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY" }}
-      /> */}
+      <TextWithImage
+        numberOfLines={3}
+        renderLeftView={
+          <Image
+            source={{
+              uri: 'https://fastly.picsum.photos/id/1/200/300.jpg?hmac=jH5bDkLr6Tgy3oAg5khKCHeunZMHq0ehBZr6vGifPLY',
+            }}
+            style={styles.imageStyle}
+          />
+        }
+        title={'The react-native-triveni-component'}
+      />
     </View>
   );
 }
@@ -65,5 +75,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
     gap: 10,
+  },
+  imageStyle: {
+    height: 60,
+    width: 60,
   },
 });
