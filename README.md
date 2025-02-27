@@ -14,6 +14,10 @@ npm install react-native-triveni-component
 npm install react-native-device-info
 ```
 
+```sh
+npm install react-native-fast-image
+```
+
 ### ios
 
 ```sh
