@@ -38,7 +38,7 @@ const getStyles = ({ colors }: ReturnType<typeof getCustomThemeConfig>) =>
       borderColor: colors.primary,
     },
     disabledStyle: {
-      backgroundColor: colors.gray,
+      backgroundColor: colors.disable,
       borderWidth: 0,
     },
     fixTxtStyle: {

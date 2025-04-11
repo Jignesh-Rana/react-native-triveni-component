@@ -30,7 +30,7 @@ configureTheme({
   colors: {
     black: '#000000',
     white: '#FFFFFF',
-    disable: '#7C7C7C',
+    disable: '#D0D0D0',
     primary: '#0053FF',
     secondPrimary: '#001644',
     gray: '#7C7C7C',
@@ -46,6 +46,7 @@ export default function App() {
       <CustomText size="xl">Hello World</CustomText>
       <CustomInput title={'First Name'} placeholder={'First Name'} />
       <CustomButton title="Submit" />
+      <CustomButton disabled title="Submit" />
       <CustomTag
         title="Custom"
         tagBackgroundColor="blue"
