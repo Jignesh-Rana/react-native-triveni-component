@@ -98,7 +98,7 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
         style={[
           styles.inputContainer,
           {
-            borderColor: !!errorText
+            borderColor: errorText
               ? colors.error
               : focused
                 ? colors.primary
@@ -114,7 +114,7 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
           {...props}
           style={[
             styles.inputStyle,
-            { color: !!errorText ? colors.error : colors.black },
+            { color: errorText ? colors.error : colors.black },
             props.style,
           ]}
           placeholderTextColor={colors.disable}

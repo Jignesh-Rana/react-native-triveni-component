@@ -1,6 +1,6 @@
 {
   "name": "react-native-triveni-component",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Triveni custom component library",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -81,7 +81,7 @@
     "react-native": "0.76.7",
     "react-native-builder-bob": "^0.37.0",
     "release-it": "^17.10.0",
-    "typescript": "^5.2.2"
+    "typescript": "5.1.6"
   },
   "resolutions": {
     "@types/react": "^18.2.44"
@@ -133,6 +133,7 @@
     ],
     "rules": {
       "react/react-in-jsx-scope": "off",
+      "react-native/no-inline-styles": "off",
       "prettier/prettier": [
         "error",
         {
