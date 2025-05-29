@@ -235,6 +235,477 @@ import { useHasNotch } from 'react-native-triveni-component';
 const hasNotch = useHasNotch();
 ```
 
+## CustomCheckbox Component
+
+A customizable checkbox component with optional title text and support for custom colors, size, and disabled state.
+
+```js
+import { CustomCheckbox } from 'react-native-triveni-component';
+
+// ...
+
+<CustomCheckbox
+    onValueChange={handleCheckboxChange}
+    checkColor="primary"
+    uncheckColor="black"
+    size={30}
+    title="Terms and conditions"
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomCheckbox.png "CustomCheckbox Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default     | Type                       | Description                                                                   |
+| ----------------- | ----------- | -------------------------- | ----------------------------------------------------------------------------- |
+| **defaultValue**  | `false`     | `boolean`                  | Initial checkbox value (checked or unchecked).                                |
+| **onValueChange** | `undefined` | `(value: boolean) => void` | Callback triggered when checkbox state changes.                               |
+| **onTitlePress**  | `undefined` | `() => void`               | Callback triggered when the title text is pressed.                            |
+| **style**         | `undefined` | `StyleProp<ViewStyle>`     | Additional styles for the main container.                                     |
+| **checkColor**    | `'primary'` | `keyof ThemeColors`        | Color for the checkbox when checked (from `getCustomThemeConfig().colors`).   |
+| **uncheckColor**  | `'primary'` | `keyof ThemeColors`        | Color for the checkbox when unchecked (from `getCustomThemeConfig().colors`). |
+| **size**          | `25`        | `number`                   | Size (height and width) of the checkbox icon.                                 |
+| **disabled**      | `false`     | `boolean`                  | If true, disables interaction and applies disabled styling.                   |
+| **title**         | `undefined` | `string`                   | Optional label shown next to the checkbox.                                    |
+| **titleStyle**    | `undefined` | `TextStyle`                | Additional style for the title text.                                          |
+
+
+## CustomDivider Component
+
+A simple horizontal divider component to visually separate sections. Supports customizable thickness, color, and margins.
+
+```js
+import { CustomDivider } from 'react-native-triveni-component';
+
+// ...
+
+<CustomDivider thickness={1} color="black" />
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomDivider.png "CustomDivider Preview")
+
+Properties used to customize the rendering:
+
+| Prop                 | Default     | Type                   | Description                                                |
+| -------------------- | ----------- | ---------------------- | ---------------------------------------------------------- |
+| **thickness**        | `1`         | `number`               | Height of the divider line.                                |
+| **color**            | `'gray'`    | `keyof ThemeColors`    | Color of the divider from `getCustomThemeConfig().colors`. |
+| **style**            | `undefined` | `StyleProp<ViewStyle>` | Additional styles to apply to the divider.                 |
+| **marginVertical**   | `8`         | `number`               | Vertical margin around the divider.                        |
+| **marginHorizontal** | `0`         | `number`               | Horizontal margin around the divider.                      |
+
+
+## CustomAvatar Component
+
+A customizable avatar component that can display either a profile image or user initials with an optional online status indicator.
+
+```js
+import { CustomAvatar } from 'react-native-triveni-component';
+
+// ...
+
+<CustomAvatar
+    name="Ridham Tejani"
+    uri=""
+    size={160}
+    showStatus
+    isOnline
+    backgroundColor="secondPrimary"
+    textColor="white"
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomAvatar.png "CustomAvatar Preview")
+
+Properties used to customize the rendering:
+
+| Prop                | Default     | Type                | Description                                                              |
+| ------------------- | ----------- | ------------------- | ------------------------------------------------------------------------ |
+| **name**            | `undefined` | `string`            | Full name used to extract and display initials if `uri` is not provided. |
+| **uri**             | `undefined` | `string`            | Remote image URL to display as the avatar.                               |
+| **size**            | `60`        | `number`            | Diameter of the avatar in pixels.                                        |
+| **showStatus**      | `false`     | `boolean`           | Whether to show the status indicator dot.                                |
+| **isOnline**        | `false`     | `boolean`           | If `true`, shows the status dot in primary color; otherwise, in gray.    |
+| **backgroundColor** | `'gray'`    | `keyof ThemeColors` | Background color used when displaying initials.                          |
+| **textColor**       | `'white'`   | `keyof ThemeColors` | Text color of the initials.                                              |
+| **containerStyle**  | `undefined` | `ViewStyle`         | Custom styles for the avatar container.                                  |
+| **textStyle**       | `undefined` | `TextStyle`         | Custom styles for the initials text.                                     |
+
+
+## CustomToggleSwitch Component
+
+A flexible toggle switch component with optional label support and theme-based customization for both Android and iOS platforms.
+
+```js
+import { CustomToggleSwitch } from 'react-native-triveni-component';
+
+// ...
+
+<CustomToggleSwitch
+    value={false}
+    onValueChange={(val) => console.log(val)}
+    label="Enable Notifications"
+    labelPosition="right"
+    activeColor="primary"
+    inactiveColor="gray"
+    thumbColorOff="green"
+    thumbColorOn="red"
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomToggleSwitch.png "CustomToggleSwitch Preview")
+
+Properties used to customize the rendering:
+
+| Prop              | Default        | Type                     | Description                                  |
+| ----------------- | -------------- | ------------------------ | -------------------------------------------  |
+| **value**         | `false`        | `boolean`                | Current state of the switch.                 |
+| **onValueChange** | `undefined`    | `(val: boolean) => void` | Callback when the switch value changes.      |
+| **style**         | `undefined`    | `StyleProp<ViewStyle>`   | Additional styling for the container.        |
+| **activeColor**   | `'primary'`    | `keyof ThemeColors`      | Track color when the switch is ON.           |
+| **inactiveColor** | `'gray'`       | `keyof ThemeColors`      | Track color when the switch is OFF.          |
+| **disabled**      | `false`        | `boolean`                | Whether the switch is disabled.              |
+| **label**         | `undefined`    | `string`                 | Text label to display alongside the switch.  |
+| **labelPosition** | `'left'`       | \`'left'                 | Position of the label relative to the switch.|
+| **thumbColorOn**  | `colors.white` | `string`                 | Custom color for the thumb when ON.          |
+| **thumbColorOff** | `colors.white` | `string`                 | Custom color for the thumb when OFF.         |
+
+
+## CustomBottomSheet Component
+
+A reusable bottom sheet component built using @gorhom/bottom-sheet, providing responsive behavior, optional title, keyboard handling, and customizable snap points.
+
+```js
+import { CustomBottomSheet } from 'react-native-triveni-component';
+
+// ...
+
+const [showSheet, setShowSheet] = React.useState(false);
+
+<CustomBottomSheet
+    visible={showSheet}
+    onClose={() => {
+        setShowSheet(false);
+    }}
+    snapPoints={['50%', '90%']}
+>
+ // Bottom sheet content    
+</CustomBottomSheet>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomBottomSheet.gif "CustomBottomSheet Preview")
+
+Properties used to customize the rendering:
+
+| Prop           | Default          | Type               | Description                                                                 |
+| -------------- | ---------------- | -----------------  | --------------------------------------------------------------------------- |
+| **visible**    | `false`          | `boolean`          | Controls the visibility of the bottom sheet.                                |
+| **onClose**    | `undefined`      | `() => void`       | Callback invoked when the sheet is dismissed (via swipe or backdrop press). |
+| **title**      | `undefined`      | `string`           | Optional header text shown at the top of the sheet.                         |
+| **children**   | *required*       | `React.ReactNode`  | Content to render inside the sheet.                                         |
+| **snapPoints** | `['50%', '90%']` | (string or number)[]| Defines the snap points for the sheet — accepts percentages (e.g., '50%') or pixel values (e.g., 300). The sheet will snap to these positions when dragged.|
+
+
+## CustomCard Component
+
+A flexible and theme-aware card component to wrap content with optional padding, elevation, border radius, and background color.
+
+```js
+import { CustomCard } from 'react-native-triveni-component';
+
+// ...
+
+<CustomCard
+    padding="large"
+    radius="large"
+    bgColor="disable"
+    style={{ width: '100%' }}
+>
+   // Your content
+</CustomCard>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomCard.png "CustomCard Preview")
+
+Properties used to customize the rendering:
+
+| Prop          | Default     | Type                                       | Description                                                                    |
+| ------------- | ----------- | ------------------------------------------ | ------------------------------------------------------------------------------ |
+| **children**  | *required*  | `React.ReactNode`                          | Elements or components rendered inside the card.                               |
+| **elevation** | `3`         | `number`                                   | Sets elevation and shadow for Android/iOS.                                     |
+| **padding**   | `'medium'`  | `'none' \| 'small' \| 'medium' \| 'large'` | Controls internal spacing of the card.                                         |
+| **radius**    | `'medium'`  | `'none' \| 'small' \| 'medium' \| 'large'` | Sets border radius for rounded corners.                                        |
+| **bgColor**   | `'white'`   | `keyof colors from theme`                  | Applies background color from theme (e.g., `'primary'`, `'disable'`).          |
+| **style**     | `undefined` | `StyleProp<ViewStyle>`                     | Additional styles for the card container.                                      |
+| *...props*    | *optional*  | `ViewProps`                                | Pass-through props for the `View` component (e.g., `testID`, `accessibility`). |
+
+## CustomModal Component
+
+A customizable modal component with theme-based background and centered content. Automatically includes a dimmed backdrop and dismiss-on-press-out behavior.
+
+```js
+import { CustomModal } from 'react-native-triveni-component';
+
+// ...
+
+  const [show, setShow] = React.useState(false);
+
+<CustomModal
+    visible={show}
+    onClose={() => {
+        setShow(false);
+    }}
+>
+    // Modal content
+</CustomModal>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomModal.gif "CustomModal Preview")
+
+Properties used to customize the rendering:
+
+| Prop         | Default     | Type                              | Description                                                                  |
+| ------------ | ----------- | --------------------------------- | ---------------------------------------------------------------------------- |
+| **visible**  | *required*  | `boolean`                         | Controls whether the modal is shown.                                         |
+| **onClose**  | *required*  | `() => void`                      | Called when the user taps outside the modal (on the backdrop).               |
+| **children** | `undefined` | `React.ReactNode`                 | Content displayed inside the modal.                                          |
+| **bgColor**  | `'white'`   | `keyof colors from theme`         | Sets the modal background color using your theme config.                     |
+| **style**    | `undefined` | `StyleProp<ViewStyle>`            | Custom styles applied to the modal container (e.g., padding, border radius). |
+| *...props*   | *optional*  | `Omit<ModalProps, 'transparent'>` | Any other valid React Native `Modal` props except `transparent`.             |
+
+## CustomSnackbar Component
+
+A customizable snackbar component that slides in from the bottom and disappears automatically. Useful for brief messages or alerts.
+
+```js
+import { CustomSnackbar } from 'react-native-triveni-component';
+
+// ...
+
+const [showSnackbar, setShowSnackbar] = React.useState(false);
+
+<CustomSnackbar
+    visible={showSnackbar}
+    message="Snackbar open successfully! 🎉🥳"
+    bgColor="primary"
+    textColor="white"
+    onHide={() => setShowSnackbar(false)}
+/>
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomSnackbar.png "CustomSnackbar Preview")
+
+Properties used to customize the rendering:
+
+| Prop          | Default     | Type                     | Description                                                           |
+| ------------- | ----------- | ------------------------ | --------------------------------------------------------------------- |
+| **visible**   | *required*  | `boolean`                | Whether the snackbar is visible on the screen.                        |
+| **message**   | *required*  | `string`                 | The message text to display inside the snackbar.                      |
+| **duration**  | `3000`      | `number` (milliseconds)  | How long the snackbar remains visible before auto-hiding.             |
+| **bgColor**   | `'black'`   | `keyof theme.colors`     | The background color of the snackbar based on the theme.              |
+| **textColor** | `'white'`   | `keyof theme.colors`     | The text color for the snackbar message.                              |
+| **style**     | `undefined` | `StyleProp<ViewStyle>`   | Optional custom styles for the outer snackbar container.              |
+| **textStyle** | `undefined` | `StyleProp<TextStyle>`   | Optional custom styles for the text inside the snackbar.              |
+| **size**      | `'xl'`      | `keyof theme.fontSizes`  | Font size of the snackbar message from the theme.                     |
+| **font**      | `'Bold'`    | `keyof theme.fontFamily` | Font family of the snackbar message from the theme.                   |
+| **onHide**    | `undefined` | `() => void`             | Callback triggered when the snackbar is hidden (after duration ends). |
+
+## CustomAccordion Component
+
+An expandable/collapsible panel to show and hide content. Ideal for FAQs, sections, or grouped content.
+
+```js
+import { CustomAccordion } from 'react-native-triveni-component';
+
+// ...
+  const data = [
+    {
+      id: '1',
+      title: 'FAQs',
+      content: [
+        'This is some additional content inside the accordion!',
+        'Another FAQ point goes here.',
+      ],
+    },
+    {
+      id: '2',
+      title: 'Terms & Conditions',
+      content: ['All your legal stuff here.', 'Don’t forget the fine print!'],
+    },
+    {
+      id: '3',
+      title: 'Support',
+      content: ['Email us at support@example.com', 'Call us: 123-456-7890'],
+    },
+  ];
+
+  // ...
+
+<FlatList
+    data={data}
+    scrollEnabled={false}
+    keyExtractor={(item) => item.id}
+    renderItem={({ item }) => (
+        <CustomAccordion title={item.title}>
+            {item.content.map((line, index) => (
+                <CustomText key={index}>{line}</CustomText>
+            ))}
+        </CustomAccordion>
+    )}
+/>
+
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomAccordion.gif "CustomAccordion Preview")
+
+Properties used to customize the rendering:
+
+| Prop               | Default             | Type                   | Description                                                 |
+| ------------------ | ------------------- | ---------------------- | ----------------------------------------------------------- |
+| **title**          | *required*          | `string`               | The title of the accordion section.                         |
+| **children**       | *required*          | `React.ReactNode`      | Content shown when the accordion is expanded.               |
+| **initiallyOpen**  | `false`             | `boolean`              | Whether the accordion starts in the open state.             |
+| **containerStyle** | `undefined`         | `StyleProp<ViewStyle>` | Custom styles for the accordion container.                  |
+| **titleStyle**     | `undefined`         | `StyleProp<TextStyle>` | Custom styles for the title text.                           |
+| **contentStyle**   | `undefined`         | `StyleProp<ViewStyle>` | Custom styles for the content view inside the accordion.    |
+| **textColor**      | `'black'`           | `keyof theme.colors`   | Theme color used for the title text.                        |
+| **expandedIcon**   | `<UpArrowIcon />`   | `React.ReactNode`      | Optional custom icon shown when accordion is open.          |
+| **collapsedIcon**  | `<DownArrowIcon />` | `React.ReactNode`      | Optional custom icon shown when accordion is collapsed.     |
+| **iconPosition**   | `'right'`           | `'left' \| 'right'`    | Position of the expand/collapse icon relative to the title. |
+
+## CustomRadioGroup Component
+
+A customizable radio group component that supports both single and multiple selections, including custom icons, styles, and disabled options.
+
+```js
+import { CustomRadioGroup } from 'react-native-triveni-component';
+
+  // ...
+const [fruit, setFruit] = React.useState('apple');
+const [selectedFruits, setSelectedFruits] = React.useState<string[]>([]);
+
+<CustomRadioGroup
+    containerStyle={styles.radioButton}
+    value={fruit}
+    onChange={setFruit}
+    options={[
+        { label: 'Apple', value: 'apple' },
+        { label: 'Banana', value: 'banana', disabled: true },
+        { label: 'Mango', value: 'mango' },
+    ]}
+/>
+
+// For multiple selection
+
+<CustomRadioGroup
+    type="multiple"
+    labelStyle={{ fontSize: 18, color: 'purple' }}
+    circleStyle={{ borderWidth: 3, borderColor: 'orange' }}
+    containerStyle={styles.radioButton}
+    value={selectedFruits}
+    onChange={setSelectedFruits}
+    options={[
+        { label: 'Apple', value: 'apple' },
+        { label: 'Banana', value: 'banana' },
+        { label: 'Mango', value: 'mango', disabled: true },
+    ]}
+/>
+
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomRadioGroup.gif "CustomRadioGroup Preview")
+
+Properties used to customize the rendering:
+
+Common Props
+| Prop             | Type                   | Default | Description                       |
+| ---------------- | ---------------------- | ------- | --------------------------------- |
+| `options`        | `RadioOption[]`        | —       | Array of radio options to render. |
+| `containerStyle` | `StyleProp<ViewStyle>` | —       | Style for the main container.     |
+| `optionStyle`    | `StyleProp<ViewStyle>` | —       | Style for individual option rows. |
+| `labelStyle`     | `StyleProp<TextStyle>` | —       | Style for the text label.         |
+| `circleStyle`    | `StyleProp<ViewStyle>` | —       | Style for the radio circle.       |
+
+Single Select Props (type?: 'single')
+| Prop       | Type                      | Default | Description                            |
+| ---------- | ------------------------- | ------- | -------------------------------------- |
+| `value`    | `string`                  | —       | Currently selected value.              |
+| `onChange` | `(value: string) => void` | —       | Callback when a new value is selected. |
+
+Multiple Select Props (type: 'multiple')
+| Prop       | Type                        | Default | Description                                     |
+| ---------- | --------------------------- | ------- | ----------------------------------------------- |
+| `type`     | `'multiple'`                | —       | Required to enable multi-select mode.           |
+| `value`    | `string[]`                  | —       | Array of selected values.                       |
+| `onChange` | `(value: string[]) => void` | —       | Callback with updated array of selected values. |
+
+## CustomSlider Component
+
+A customizable and theme-aware slider component built on top of @react-native-community/slider, designed to display labels, current value, and allow advanced styling and extensibility.
+
+```js
+import { CustomSlider } from 'react-native-triveni-component';
+
+  // ...
+<CustomSlider
+    label="Brightness"
+    value={sliderVal}
+    onChange={setSliderVal}
+    min={0}
+    max={100}
+    step={1}
+    showValue
+    trackColor="orange"
+    trackSecondaryColor="lightgray"
+    thumbColor="purple"
+    containerStyle={{ padding: 16 }}
+    valueStyle={{ color: 'blue', fontWeight: 'bold' }}
+    renderValue={(val) => (
+        <CustomText size="xl2" font="Bold" style={{ color: 'green' }}>
+            {val}%
+        </CustomText>
+    )}
+    sliderProps={{ disabled: false }}
+/>
+
+```
+
+### Preview
+![Hosted Image](https://raw.githubusercontent.com/Jignesh-Rana/react-native-triveni-component/refs/heads/main/assets/CustomSlider.gif "CustomSlider Preview")
+
+Properties used to customize the rendering:
+
+| Prop                  | Type                                           | Default         | Description                                                 |
+| --------------------- | ---------------------------------------------- | --------------- | ----------------------------------------------------------- |
+| `value`               | `number`                                       | **required**    | Current slider value.                                       |
+| `onChange`            | `(value: number) => void`                      | **required**    | Callback when value changes.                                |
+| `min`                 | `number`                                       | `0`             | Minimum value.                                              |
+| `max`                 | `number`                                       | `100`           | Maximum value.                                              |
+| `step`                | `number`                                       | `1`             | Step increment.                                             |
+| `label`               | `string`                                       | —               | Optional text label shown above slider.                     |
+| `showValue`           | `boolean`                                      | `true`          | Whether to show the current value below the slider.         |
+| `containerStyle`      | `StyleProp<ViewStyle>`                         | —               | Style for the slider's outer container.                     |
+| `sliderStyle`         | `StyleProp<ViewStyle>`                         | —               | Style for the actual slider.                                |
+| `labelStyle`          | `StyleProp<TextStyle>`                         | —               | Style for the label text.                                   |
+| `valueStyle`          | `StyleProp<TextStyle>`                         | —               | Style for the value text.                                   |
+| `trackColor`          | `string`                                       | `theme.primary` | Color for the active track (left side of thumb).            |
+| `trackSecondaryColor` | `string`                                       | `theme.gray`    | Color for the inactive track (right side of thumb).         |
+| `thumbColor`          | `string`                                       | `theme.primary` | Color of the thumb (draggable circle).                      |
+| `renderLabel`         | `() => React.ReactNode`                        | —               | Custom render function for the label area.                  |
+| `renderValue`         | `(value: number) => React.ReactNode`           | —               | Custom render function for the value display.               |
+| `sliderProps`         | `Partial<React.ComponentProps<typeof Slider>>` | `{}`            | Additional props passed to the underlying slider component. |
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
