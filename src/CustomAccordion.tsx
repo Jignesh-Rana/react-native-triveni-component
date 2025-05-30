@@ -13,8 +13,8 @@ import {
 } from 'react-native';
 import { getCustomThemeConfig } from './Config';
 import CustomText from './CustomText';
-import { DownArrowIcon } from '../assets/icons/DownArrowIcon';
-import { UpArrowIcon } from '../assets/icons/UpArrowIcon';
+import { DownArrowIcon } from './icons/DownArrowIcon';
+import { UpArrowIcon } from './icons/UpArrowIcon';
 
 export interface CustomAccordionProps {
   title: string;
