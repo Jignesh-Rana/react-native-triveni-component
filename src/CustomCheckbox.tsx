@@ -6,8 +6,8 @@ import {
   type TextStyle,
   type ViewStyle,
 } from 'react-native';
-import { CheckBox } from '../assets/icons/CheckBox';
-import { UncheckBox } from '../assets/icons/UncheckBox';
+import { CheckBox } from './icons/CheckBox';
+import { UncheckBox } from './icons/UncheckBox';
 import { getCustomThemeConfig } from './Config';
 import CustomText from './CustomText';
 
