@@ -26,6 +26,8 @@ import {
   CustomAccordion,
   CustomRadioGroup,
   CustomSlider,
+  CustomDropDown,
+  CustomMultiSelectDropDown,
 } from 'react-native-triveni-component';
 
 // Configure fonts, sizes, and colors only once
@@ -66,6 +68,23 @@ export default function App() {
   const [fruit, setFruit] = React.useState('apple');
   const [selectedFruits, setSelectedFruits] = React.useState<string[]>([]);
   const [sliderVal, setSliderVal] = React.useState(25);
+  const [dropDownValue, setDropDownValue] = React.useState<{
+    label: string;
+    value: string | number;
+  } | null>(null);
+  const [multiselectDropDownValue, setMultiselectDropDownValue] =
+    React.useState<string[] | null>(null);
+
+  const dropdownList = [
+    { label: 'Item 1', value: '1' },
+    { label: 'Item 2', value: '2' },
+    { label: 'Item 3', value: '3' },
+    { label: 'Item 4', value: '4' },
+    { label: 'Item 5', value: '5' },
+    { label: 'Item 6', value: '6' },
+    { label: 'Item 7', value: '7' },
+    { label: 'Item 8', value: '8' },
+  ];
 
   const data = [
     {
@@ -102,6 +121,29 @@ export default function App() {
           {/* <CustomLoader /> */}
           <CustomText size="xl">Hello World</CustomText>
           <CustomInput title={'First Name'} placeholder={'First Name'} />
+          <CustomDropDown
+            title={'Dropdown example'}
+            searchPlaceholder={'Search...'}
+            data={dropdownList}
+            value={dropDownValue}
+            search
+            onChange={(value) => {
+              setDropDownValue(value);
+            }}
+          />
+          <CustomMultiSelectDropDown
+            title={'Multi select dropdown example'}
+            data={dropdownList}
+            searchPlaceholder={'Search...'}
+            value={multiselectDropDownValue}
+            search
+            selectAllLabel="All"
+            isAllSelectedEnabled
+            onChange={(value) => {
+              setMultiselectDropDownValue(value);
+            }}
+          />
+
           <CustomButton title="Submit" />
           <CustomButton disabled title="Submit" />
           <CustomTag

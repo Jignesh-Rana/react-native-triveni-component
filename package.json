@@ -1,6 +1,6 @@
 {
   "name": "react-native-triveni-component",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Triveni custom component library",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -189,6 +189,7 @@
   "types": "./lib/typescript/commonjs/src/index.d.ts",
   "dependencies": {
     "react-native-device-info": "^14.0.4",
+    "react-native-element-dropdown": "^2.12.4",
     "react-native-fast-image": "^8.6.3"
   }
 }
