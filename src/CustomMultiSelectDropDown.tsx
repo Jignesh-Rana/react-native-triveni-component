@@ -220,15 +220,17 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
 
   const [focused, setFocused] = useState(false);
 
-  const isAllSelected = isAllSelectedEnabled && data.length === value?.length;
-  // Adjust the displayed value based on the selection
-  const displayedValue = isAllSelected ? [CustomMultiSelect.selectAll] : value;
+  const allValues = data.map((item) => item.value);
+  const isAllSelected =
+    isAllSelectedEnabled &&
+    value &&
+    value?.length > 0 &&
+    allValues?.every((val) => value?.includes(val));
 
   const handleSelectAll = () => {
     if (isAllSelected) {
       onChange?.([]); // Deselect all
     } else {
-      const allValues = data.map((item) => item.value);
       onChange?.(allValues); // Select all
     }
   };
@@ -248,7 +250,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
         style={[
           styles.dropdown,
           {
-            borderColor: !!errorText
+            borderColor: errorText
               ? colors.error
               : focused
                 ? colors.primary
@@ -268,12 +270,15 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
         labelField="label"
         valueField="value"
         placeholder={placeholder}
-        value={displayedValue} // Use adjusted value
+        value={value}
         onChange={(item) => {
           if (item.includes(CustomMultiSelect.selectAll)) {
             handleSelectAll();
           } else {
-            onChange?.(item);
+            const filtered = item.filter(
+              (val) => val !== CustomMultiSelect.selectAll
+            );
+            onChange?.(filtered);
           }
         }}
         renderItem={(item) => {
@@ -296,19 +301,41 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
             </View>
           );
         }}
-        renderSelectedItem={(item, unSelect) => (
-          <TouchableOpacity
-            style={styles.selectedOption}
-            onPress={() => unSelect && unSelect(item)}
-          >
-            <CustomText
-              numberOfLines={1}
-              style={styles.selectedTxtStyle}
-              children={item.label}
-            />
-            <CloseRoundIcon />
-          </TouchableOpacity>
-        )}
+        renderSelectedItem={(item, unSelect) => {
+          if (
+            isAllSelected &&
+            data &&
+            data?.[0] &&
+            item.value === data[0].value
+          ) {
+            // Only render "All" chip once
+            return (
+              <TouchableOpacity
+                style={styles.selectedOption}
+                onPress={handleSelectAll}
+              >
+                <CustomText numberOfLines={1} style={styles.selectedTxtStyle}>
+                  {selectAllLabel}
+                </CustomText>
+                <CloseRoundIcon />
+              </TouchableOpacity>
+            );
+          }
+          if (isAllSelected) return <></>;
+          return (
+            <TouchableOpacity
+              style={styles.selectedOption}
+              onPress={() => unSelect && unSelect(item)}
+            >
+              <CustomText
+                numberOfLines={1}
+                style={styles.selectedTxtStyle}
+                children={item.label}
+              />
+              <CloseRoundIcon />
+            </TouchableOpacity>
+          );
+        }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         disable={disable}
