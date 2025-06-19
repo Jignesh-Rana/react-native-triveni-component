@@ -13,6 +13,7 @@ import CustomText from './CustomText';
 
 interface CustomTextInputProps extends TextInputProps {
   title?: string;
+  isFloating?: boolean;
   titleTxtStyle?: StyleProp<TextStyle>;
   inputContainer?: StyleProp<ViewStyle>;
   mainContainer?: StyleProp<ViewStyle>;
@@ -34,6 +35,17 @@ const getStyles = ({
     },
     titleTxtStyle: {
       marginBottom: 16,
+    },
+    floatingLabel: {
+      position: 'absolute',
+      top: -10,
+      left: 20,
+      backgroundColor: colors.white,
+      paddingHorizontal: 4,
+      fontSize: fontSizes.xs,
+      fontFamily: fontFamily.Medium,
+      color: colors.primary,
+      zIndex: 1,
     },
     inputContainer: {
       flexDirection: 'row',
@@ -75,6 +87,7 @@ const getStyles = ({
 const CustomInput: React.FC<CustomTextInputProps> = (props) => {
   const {
     title,
+    isFloating,
     inputContainer,
     renderLeftIcon,
     renderRightIcon,
@@ -82,18 +95,29 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
     mainContainer,
     titleTxtStyle,
     renderErrorIcon,
+    value,
+    ...rest
   } = props;
+
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
   const [focused, setFocused] = useState(false);
 
+  const shouldFloat = isFloating && (focused || !!value);
+
   return (
     <View style={[styles.containerStyle, mainContainer]}>
-      {title && (
-        <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+      {shouldFloat && title && (
+        <CustomText
+          style={[
+            isFloating ? styles.floatingLabel : styles.titleTxtStyle,
+            titleTxtStyle,
+          ]}
+        >
           {title}
         </CustomText>
       )}
+
       <View
         style={[
           styles.inputContainer,
@@ -110,8 +134,10 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
         {renderLeftIcon && (
           <View style={styles.leftIconStyle}>{renderLeftIcon}</View>
         )}
+
         <TextInput
-          {...props}
+          {...rest}
+          value={value}
           style={[
             styles.inputStyle,
             { color: errorText ? colors.error : colors.black },
@@ -121,10 +147,12 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
+
         {renderRightIcon && (
           <View style={styles.rightIconStyle}>{renderRightIcon}</View>
         )}
       </View>
+
       {errorText && (
         <View style={styles.errorContainer}>
           {renderErrorIcon && (
