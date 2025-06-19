@@ -120,7 +120,11 @@ export default function App() {
         >
           {/* <CustomLoader /> */}
           <CustomText size="xl">Hello World</CustomText>
-          <CustomInput title={'First Name'} placeholder={'First Name'} />
+          <CustomInput
+            isFloating
+            title={'First Name'}
+            placeholder={'First Name'}
+          />
           <CustomDropDown
             title={'Dropdown example'}
             searchPlaceholder={'Search...'}
