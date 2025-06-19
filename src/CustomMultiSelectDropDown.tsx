@@ -30,6 +30,11 @@ interface CustomMultiSelectDropDownProps {
   placeholder?: string;
 
   /**
+   * Enables floating label behavior (label floats above input when focused or filled)
+   */
+  isFloating?: boolean;
+
+  /**
    * List of options to display in the dropdown.
    *
    * Each item should have a `label` (text shown to user) and a `value` (underlying string identifier).
@@ -135,6 +140,17 @@ function getStyles({
     titleTxtStyle: {
       marginBottom: 16,
     },
+    floatingLabel: {
+      position: 'absolute',
+      top: -10,
+      left: 20,
+      backgroundColor: colors.white,
+      paddingHorizontal: 4,
+      fontSize: fontSizes.xs,
+      fontFamily: fontFamily.Medium,
+      color: colors.primary,
+      zIndex: 1,
+    },
     dropdown: {
       borderWidth: 1,
       borderRadius: 20,
@@ -200,6 +216,7 @@ function getStyles({
 const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
   title,
   placeholder,
+  isFloating,
   data,
   value = [],
   errorText,
@@ -219,6 +236,8 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
   const styles = getStyles({ colors, fontFamily, fontSizes });
 
   const [focused, setFocused] = useState(false);
+
+  const shouldFloat = isFloating && (focused || !!value);
 
   const allValues = data.map((item) => item.value);
   const isAllSelected =
@@ -241,8 +260,14 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-      {title && (
+      {title && !isFloating && (
         <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+          {title}
+        </CustomText>
+      )}
+
+      {title && isFloating && shouldFloat && (
+        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
           {title}
         </CustomText>
       )}
@@ -269,7 +294,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
         searchPlaceholder={searchPlaceholder}
         labelField="label"
         valueField="value"
-        placeholder={placeholder}
+        placeholder={isFloating ? title : placeholder}
         value={value}
         onChange={(item) => {
           if (item.includes(CustomMultiSelect.selectAll)) {

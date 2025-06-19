@@ -107,13 +107,14 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
 
   return (
     <View style={[styles.containerStyle, mainContainer]}>
-      {shouldFloat && title && (
-        <CustomText
-          style={[
-            isFloating ? styles.floatingLabel : styles.titleTxtStyle,
-            titleTxtStyle,
-          ]}
-        >
+      {title && !isFloating && (
+        <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+          {title}
+        </CustomText>
+      )}
+
+      {title && isFloating && shouldFloat && (
+        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
           {title}
         </CustomText>
       )}
@@ -144,6 +145,9 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
             props.style,
           ]}
           placeholderTextColor={colors.disable}
+          placeholder={
+            isFloating ? (!shouldFloat ? title : '') : props.placeholder
+          }
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
