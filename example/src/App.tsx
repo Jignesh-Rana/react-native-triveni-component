@@ -126,6 +126,7 @@ export default function App() {
             placeholder={'First Name'}
           />
           <CustomDropDown
+            isFloating
             title={'Dropdown example'}
             searchPlaceholder={'Search...'}
             data={dropdownList}
@@ -136,6 +137,7 @@ export default function App() {
             }}
           />
           <CustomMultiSelectDropDown
+            isFloating
             title={'Multi select dropdown example'}
             data={dropdownList}
             searchPlaceholder={'Search...'}

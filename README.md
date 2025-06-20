@@ -96,6 +96,7 @@ Properties used to customize the rendering:
 | ------------------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | **title**           | undefine | `string`    | Input title                                                                                                                            |
 | **value**           | undefine | `string`    | The value to show for the text input                                                                                                   |
+| **isFloating**      | undefine | `boolean`   | Enables floating label behavior (label floats above input when focused or filled)                                                      |
 | **renderLeftIcon**  | undefine | `ReactNode` | Render left input icon                                                                                                                 |
 | **renderRightIcon** | undefine | `ReactNode` | Render right input icon                                                                                                                |
 | **renderErrorIcon** | undefine | `ReactNode` | Render error input icon                                                                                                                |
@@ -755,17 +756,19 @@ const [dropDownValue, setDropDownValue] = React.useState<{ label: string; value:
 
 Properties used to customize the rendering:
 
-Common Props
-| Prop | Type | Default | Description |
-| ------------------ | -------------------------------------------------- | ------- | --------------------------------------------------------------------------- |
-| `title` | `string` | — | Optional label/title displayed above the dropdown. |
-| `placeholder` | `string` | — | Placeholder text shown when no item is selected. |
-| `data` | `{ label: string; value: string \| number }[]` | — | List of items to show in the dropdown. |
-| `value` | `{ label: string; value: string \| number } \| null` | — | Currently selected item from the data list. |
-| `onChange` | `(item: { label: string; value: string \| number }) => void` | — | Callback triggered when a new item is selected. |
-| `disable` | `boolean` | false | Disables the dropdown when true. |
-| `errorText` | `string` | — | Optional error message displayed below the dropdown. |
-| `renderErrorIcon` | `React.ReactNode` | — | Optional icon to display beside the error message. |
+### Common Props
+
+| Prop              | Type                                                         | Default | Description                                                                 |
+| ----------------- | ------------------------------------------------------------ | ------- | --------------------------------------------------------------------------- |
+| `title`           | `string`                                                     | —       | Optional label/title displayed above the dropdown.                          |
+| `placeholder`     | `string`                                                     | —       | Placeholder text shown when no item is selected.                            |
+| `data`            | `{ label: string; value: string \| number }[]`               | —       | List of items to show in the dropdown.                                      |
+| `value`           | `{ label: string; value: string \| number } \| null`         | —       | Currently selected item from the data list.                                 |
+| `onChange`        | `(item: { label: string; value: string \| number }) => void` | —       | Callback triggered when a new item is selected.                             |
+| `disable`         | `boolean`                                                    | false   | Disables the dropdown when true.                                            |
+| `errorText`       | `string`                                                     | —       | Optional error message displayed below the dropdown.                        |
+| `renderErrorIcon` | `React.ReactNode`                                            | —       | Optional icon to display beside the error message.                          |
+| `isFloating`      | `boolean`                                                    | false   | Enables floating label behavior (label floats above when focused or filled) |
 
 Search Props
 | Prop | Type | Default | Description |
@@ -833,6 +836,7 @@ Properties used to customize the rendering:
 | `disable`         | `boolean`                            | false   | Disables the dropdown if set to true.                                                |
 | `errorText`       | `string`                             | —       | Optional error message displayed below the dropdown.                                 |
 | `renderErrorIcon` | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                       |
+| `isFloating`      | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).         |
 
 Search Props
 | Prop | Type | Default | Description |

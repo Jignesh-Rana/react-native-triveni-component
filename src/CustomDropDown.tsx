@@ -24,6 +24,10 @@ interface CustomDropDownProps {
    * Placeholder text shown when no item is selected.
    */
   placeholder?: string;
+  /**
+   * Enables floating label behavior (label floats above input when focused or filled)
+   */
+  isFloating?: boolean;
 
   /**
    * List of items to show in the dropdown.
@@ -121,6 +125,17 @@ function getStyles({
       paddingVertical: 14,
       color: colors.black,
     },
+    floatingLabel: {
+      position: 'absolute',
+      top: -10,
+      left: 20,
+      backgroundColor: colors.white,
+      paddingHorizontal: 4,
+      fontSize: fontSizes.xs,
+      fontFamily: fontFamily.Medium,
+      color: colors.primary,
+      zIndex: 1,
+    },
     placeholderStyle: {
       fontFamily: fontFamily.Regular,
       fontSize: fontSizes.md,
@@ -157,6 +172,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
   const {
     title,
     placeholder,
+    isFloating,
     data,
     value,
     errorText,
@@ -176,10 +192,18 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
   // State to track if the dropdown is focused (for styling)
   const [focused, setFocused] = useState(false);
 
+  const shouldFloat = isFloating && (focused || !!value);
+
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-      {title && (
+      {title && !isFloating && (
         <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+          {title}
+        </CustomText>
+      )}
+
+      {title && isFloating && shouldFloat && (
+        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
           {title}
         </CustomText>
       )}
@@ -205,7 +229,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
         search={search}
         labelField="label"
         valueField="value"
-        placeholder={placeholder}
+        placeholder={isFloating ? (!shouldFloat ? title : '') : placeholder}
         searchPlaceholder={searchPlaceholder}
         value={value}
         onChange={(item) => {
