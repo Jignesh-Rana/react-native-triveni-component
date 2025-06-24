@@ -283,6 +283,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
           },
           style,
         ]}
+        dropdownPosition="auto"
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
         inputSearchStyle={styles.inputSearchStyle}

@@ -229,6 +229,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
         search={search}
         labelField="label"
         valueField="value"
+        dropdownPosition="auto"
         placeholder={isFloating ? (!shouldFloat ? title : '') : placeholder}
         searchPlaceholder={searchPlaceholder}
         value={value}
