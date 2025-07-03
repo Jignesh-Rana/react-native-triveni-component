@@ -121,6 +121,10 @@ interface CustomMultiSelectDropDownProps {
    * Custom styles for the dropdown itself (e.g., padding, border).
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * If true (default), renders custom chips for selected items.
+   */
+  isRenderSelectedItem?: boolean;
 }
 
 enum CustomMultiSelect {
@@ -231,6 +235,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
   selectedTextStyle,
   containerStyle,
   style,
+  isRenderSelectedItem = true,
 }) => {
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -328,6 +333,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
           );
         }}
         renderSelectedItem={(item, unSelect) => {
+          if (!isRenderSelectedItem) return <></>;
           if (
             isAllSelected &&
             data &&
