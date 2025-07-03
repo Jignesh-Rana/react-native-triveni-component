@@ -826,17 +826,18 @@ const [multiselectDropDownValue, setMultiselectDropDownValue] = React.useState<s
 
 Properties used to customize the rendering:
 
-| Prop              | Type                                 | Default | Description                                                                          |
-| ----------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------ |
-| `title`           | `string`                             | —       | Optional label/title displayed above the multi-select dropdown.                      |
-| `placeholder`     | `string`                             | —       | Placeholder text shown when no items are selected.                                   |
-| `data`            | `{ label: string; value: string }[]` | —       | List of options to display in the dropdown. Each item must have `label` and `value`. |
-| `value`           | `string[] \| null`                   | —       | Array of currently selected values.                                                  |
-| `onChange`        | `(items: string[]) => void`          | —       | Callback triggered when the selection changes.                                       |
-| `disable`         | `boolean`                            | false   | Disables the dropdown if set to true.                                                |
-| `errorText`       | `string`                             | —       | Optional error message displayed below the dropdown.                                 |
-| `renderErrorIcon` | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                       |
-| `isFloating`      | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).         |
+| Prop                   | Type                                 | Default | Description                                                                          |
+| ---------------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------ |
+| `title`                | `string`                             | —       | Optional label/title displayed above the multi-select dropdown.                      |
+| `placeholder`          | `string`                             | —       | Placeholder text shown when no items are selected.                                   |
+| `data`                 | `{ label: string; value: string }[]` | —       | List of options to display in the dropdown. Each item must have `label` and `value`. |
+| `value`                | `string[] \| null`                   | —       | Array of currently selected values.                                                  |
+| `onChange`             | `(items: string[]) => void`          | —       | Callback triggered when the selection changes.                                       |
+| `disable`              | `boolean`                            | false   | Disables the dropdown if set to true.                                                |
+| `errorText`            | `string`                             | —       | Optional error message displayed below the dropdown.                                 |
+| `renderErrorIcon`      | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                       |
+| `isFloating`           | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).         |
+| `isRenderSelectedItem` | `boolean`                            | True    | If true (default), renders custom chips for selected items.                          |
 
 Search Props
 | Prop | Type | Default | Description |
