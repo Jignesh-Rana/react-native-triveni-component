@@ -102,6 +102,15 @@ interface CustomDropDownProps {
    * Custom styles for the dropdown itself (e.g., border, padding).
    */
   style?: StyleProp<ViewStyle>;
+
+  /**
+   * Determines the position of the dropdown menu.
+   *
+   * - 'auto' (default): Automatically decides the best position.
+   * - 'top': Renders the dropdown above the input field.
+   * - 'bottom': Renders the dropdown below the input field.
+   */
+  dropdownPosition?: 'auto' | 'top' | 'bottom';
 }
 
 function getStyles({
@@ -185,6 +194,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
     selectedTextStyle,
     containerStyle,
     style,
+    dropdownPosition = 'auto',
   } = props;
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -229,7 +239,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
         search={search}
         labelField="label"
         valueField="value"
-        dropdownPosition="auto"
+        dropdownPosition={dropdownPosition}
         placeholder={isFloating ? (!shouldFloat ? title : '') : placeholder}
         searchPlaceholder={searchPlaceholder}
         value={value}

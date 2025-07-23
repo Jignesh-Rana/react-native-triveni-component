@@ -125,6 +125,14 @@ interface CustomMultiSelectDropDownProps {
    * If true (default), renders custom chips for selected items.
    */
   isRenderSelectedItem?: boolean;
+  /**
+   * Determines the position of the dropdown menu.
+   *
+   * - 'auto' (default): Automatically decides the best position.
+   * - 'top': Renders the dropdown above the input field.
+   * - 'bottom': Renders the dropdown below the input field.
+   */
+  dropdownPosition?: 'auto' | 'top' | 'bottom';
 }
 
 enum CustomMultiSelect {
@@ -236,6 +244,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
   containerStyle,
   style,
   isRenderSelectedItem = true,
+  dropdownPosition = 'auto',
 }) => {
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -288,7 +297,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
           },
           style,
         ]}
-        dropdownPosition="auto"
+        dropdownPosition={dropdownPosition}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
         inputSearchStyle={styles.inputSearchStyle}
