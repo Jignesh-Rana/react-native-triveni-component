@@ -123,7 +123,7 @@ export default function App() {
           <CustomInput
             isFloating
             title={'First Name'}
-            placeholder={'First Name'}
+            placeholder={'Enter Your First Name'}
           />
           <CustomDropDown
             isFloating

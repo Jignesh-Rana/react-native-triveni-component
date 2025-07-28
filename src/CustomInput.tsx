@@ -146,7 +146,13 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
           ]}
           placeholderTextColor={colors.disable}
           placeholder={
-            isFloating ? (!shouldFloat ? title : '') : props.placeholder
+            props.placeholder
+              ? props.placeholder
+              : isFloating
+                ? !shouldFloat
+                  ? title
+                  : ''
+                : ''
           }
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
