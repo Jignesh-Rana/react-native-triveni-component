@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import {
   Dimensions,
   StyleSheet,
@@ -133,11 +133,27 @@ interface CustomMultiSelectDropDownProps {
    * - 'bottom': Renders the dropdown below the input field.
    */
   dropdownPosition?: 'auto' | 'top' | 'bottom';
+  /**
+ * Provide a fully custom footer component to show INSIDE the list (after all items).
+ * The footer will NOT be filtered out when searching.
+ */
+  renderFooter?: () => React.ReactNode;
 }
 
 enum CustomMultiSelect {
   selectAll = 'selectAll',
 }
+
+interface MultiSelectRef {
+  open: () => void;
+  close: () => void;
+}
+
+export interface CustomMultiSelectDropDownRef {
+  close: () => void;
+}
+
+const FOOTER_ITEM_VALUE = '__FOOTER_ITEM__';
 
 function getStyles({
   colors,
@@ -225,7 +241,7 @@ function getStyles({
   });
 }
 
-const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
+const CustomMultiSelectDropDown = forwardRef<CustomMultiSelectDropDownRef, CustomMultiSelectDropDownProps>(({
   title,
   placeholder,
   isFloating,
@@ -245,13 +261,21 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
   style,
   isRenderSelectedItem = true,
   dropdownPosition = 'auto',
-}) => {
+  renderFooter,
+}, ref,) => {
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
 
   const [focused, setFocused] = useState(false);
 
   const shouldFloat = isFloating && (focused || !!value);
+  const dropdownRef = React.useRef<MultiSelectRef>(null);
+
+  useImperativeHandle(ref, () => ({
+    close: () => {
+      dropdownRef.current?.close();
+    },
+  }));
 
   const allValues = data.map((item) => item.value);
   const isAllSelected =
@@ -268,9 +292,13 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
     }
   };
 
-  const dropdownData = isAllSelectedEnabled
+  const baseData = isAllSelectedEnabled
     ? [{ label: selectAllLabel, value: CustomMultiSelect.selectAll }, ...data]
-    : data;
+    : [...data];
+
+  const dropdownData = renderFooter
+    ? [...baseData, { label: '__FOOTER__', value: FOOTER_ITEM_VALUE }]
+    : baseData;
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
@@ -297,6 +325,7 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
           },
           style,
         ]}
+        ref={dropdownRef}
         dropdownPosition={dropdownPosition}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
@@ -310,18 +339,30 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
         labelField="label"
         valueField="value"
         placeholder={isFloating ? title : placeholder}
+        searchQuery={(keyword: string, labelValue: string) => {
+          if (labelValue === '__FOOTER__') return true;
+          if (!keyword || keyword.trim() === '') return true;
+          return labelValue.toLowerCase().includes(keyword.toLowerCase());
+        }}
         value={value}
         onChange={(item) => {
           if (item.includes(CustomMultiSelect.selectAll)) {
             handleSelectAll();
           } else {
             const filtered = item.filter(
-              (val) => val !== CustomMultiSelect.selectAll
+              (val) => val !== FOOTER_ITEM_VALUE && val !== CustomMultiSelect.selectAll
             );
             onChange?.(filtered);
           }
         }}
         renderItem={(item) => {
+          if (item.value === FOOTER_ITEM_VALUE) {
+            return (
+              <>
+                {renderFooter?.()}
+              </>
+            );
+          }
           if (item.value === CustomMultiSelect.selectAll) {
             return (
               <TouchableOpacity
@@ -393,6 +434,6 @@ const CustomMultiSelectDropDown: React.FC<CustomMultiSelectDropDownProps> = ({
       )}
     </View>
   );
-};
+});
 
 export default CustomMultiSelectDropDown;
