@@ -120,11 +120,7 @@ export default function App() {
         >
           {/* <CustomLoader /> */}
           <CustomText size="xl">Hello World</CustomText>
-          <CustomInput
-            isFloating
-            title={'First Name'}
-            placeholder={'Enter Your First Name'}
-          />
+          <CustomInput isFloating title={'First Name'} mandatory />
           <CustomDropDown
             isFloating
             title={'Dropdown example'}
@@ -135,6 +131,7 @@ export default function App() {
             onChange={(value) => {
               setDropDownValue(value);
             }}
+            mandatory
           />
           <CustomMultiSelectDropDown
             isFloating
@@ -148,6 +145,7 @@ export default function App() {
             onChange={(value) => {
               setMultiselectDropDownValue(value);
             }}
+            mandatory
           />
 
           <CustomButton title="Submit" />

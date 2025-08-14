@@ -21,6 +21,7 @@ interface CustomTextInputProps extends TextInputProps {
   renderRightIcon?: React.ReactNode;
   renderErrorIcon?: React.ReactNode;
   errorText?: string;
+  mandatory?: boolean;
 }
 
 const getStyles = ({
@@ -82,6 +83,10 @@ const getStyles = ({
       alignItems: 'center',
       marginTop: 10,
     },
+    mandatoryStar: {
+      color: colors.error,
+      marginLeft: 4,
+    },
   });
 
 const CustomInput: React.FC<CustomTextInputProps> = (props) => {
@@ -96,6 +101,7 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
     titleTxtStyle,
     renderErrorIcon,
     value,
+    mandatory = false,
     ...rest
   } = props;
 
@@ -110,12 +116,22 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
       {title && !isFloating && (
         <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
           {title}
+          {mandatory && (
+            <CustomText size="sm" style={styles.mandatoryStar}>
+              *
+            </CustomText>
+          )}
         </CustomText>
       )}
 
       {title && isFloating && shouldFloat && (
         <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
           {title}
+          {mandatory && (
+            <CustomText size="sm" style={styles.mandatoryStar}>
+              *
+            </CustomText>
+          )}
         </CustomText>
       )}
 
@@ -150,7 +166,7 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
               ? props.placeholder
               : isFloating
                 ? !shouldFloat
-                  ? title
+                  ? `${title}${mandatory ? ' *' : ''}`
                   : ''
                 : ''
           }

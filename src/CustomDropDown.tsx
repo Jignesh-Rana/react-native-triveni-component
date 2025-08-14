@@ -111,6 +111,7 @@ interface CustomDropDownProps {
    * - 'bottom': Renders the dropdown below the input field.
    */
   dropdownPosition?: 'auto' | 'top' | 'bottom';
+  mandatory?: boolean;
 }
 
 function getStyles({
@@ -174,6 +175,10 @@ function getStyles({
     itemTextStyle: {
       color: colors.black,
     },
+    mandatoryStar: {
+      color: colors.error,
+      marginLeft: 4,
+    },
   });
 }
 
@@ -195,6 +200,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
     containerStyle,
     style,
     dropdownPosition = 'auto',
+    mandatory = false,
   } = props;
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -209,12 +215,22 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
       {title && !isFloating && (
         <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
           {title}
+          {mandatory && (
+            <CustomText size="sm" style={styles.mandatoryStar}>
+              *
+            </CustomText>
+          )}
         </CustomText>
       )}
 
       {title && isFloating && shouldFloat && (
         <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
           {title}
+          {mandatory && (
+            <CustomText size="sm" style={styles.mandatoryStar}>
+              *
+            </CustomText>
+          )}
         </CustomText>
       )}
       <Dropdown
@@ -240,7 +256,13 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
         labelField="label"
         valueField="value"
         dropdownPosition={dropdownPosition}
-        placeholder={isFloating ? (!shouldFloat ? title : '') : placeholder}
+        placeholder={
+          isFloating
+            ? !shouldFloat
+              ? `${title}${mandatory ? ' *' : ''}`
+              : ''
+            : placeholder
+        }
         searchPlaceholder={searchPlaceholder}
         value={value}
         onChange={(item) => {
