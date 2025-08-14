@@ -92,20 +92,21 @@ import { CustomInput } from 'react-native-triveni-component';
 
 Properties used to customize the rendering:
 
-| Prop                | Default  | Type        | Description                                                                                                                            |
-| ------------------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **title**           | undefine | `string`    | Input title                                                                                                                            |
-| **value**           | undefine | `string`    | The value to show for the text input                                                                                                   |
-| **isFloating**      | undefine | `boolean`   | Enables floating label behavior (label floats above input when focused or filled)                                                      |
-| **renderLeftIcon**  | undefine | `ReactNode` | Render left input icon                                                                                                                 |
-| **renderRightIcon** | undefine | `ReactNode` | Render right input icon                                                                                                                |
-| **renderErrorIcon** | undefine | `ReactNode` | Render error input icon                                                                                                                |
-| **errorText**       | undefine | `string`    | Input error text                                                                                                                       |
-| **inputContainer**  | undefine | `ViewStyle` | Add additional input container style                                                                                                   |
-| **mainContainer**   | undefine | `ViewStyle` | Add additional main container style                                                                                                    |
-| **titleTxtStyle**   | undefine | `TextStyle` | Add additional title text style                                                                                                        |
-| **style**           | undefine | `TextStyle` | Add additional input style                                                                                                             |
-| **onChangeText**    | undefine | `function`  | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
+| Prop                | Default   | Type        | Description                                                                                                                            |
+| ------------------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **title**           | undefine  | `string`    | Input title                                                                                                                            |
+| **value**           | undefine  | `string`    | The value to show for the text input                                                                                                   |
+| **isFloating**      | undefine  | `boolean`   | Enables floating label behavior (label floats above input when focused or filled)                                                      |
+| **renderLeftIcon**  | undefine  | `ReactNode` | Render left input icon                                                                                                                 |
+| **renderRightIcon** | undefine  | `ReactNode` | Render right input icon                                                                                                                |
+| **renderErrorIcon** | undefine  | `ReactNode` | Render error input icon                                                                                                                |
+| **errorText**       | undefine  | `string`    | Input error text                                                                                                                       |
+| **inputContainer**  | undefine  | `ViewStyle` | Add additional input container style                                                                                                   |
+| **mainContainer**   | undefine  | `ViewStyle` | Add additional main container style                                                                                                    |
+| **titleTxtStyle**   | undefine  | `TextStyle` | Add additional title text style                                                                                                        |
+| **style**           | undefine  | `TextStyle` | Add additional input style                                                                                                             |
+| **onChangeText**    | undefine  | `function`  | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
+| `mandatory`         | `boolean` | False       | If true, displays a red (\*) icon next to the title and in the placeholder when `isFloating` is enabled.                               |
 
 ## CustomImage Component
 
@@ -758,17 +759,18 @@ Properties used to customize the rendering:
 
 ### Common Props
 
-| Prop              | Type                                                         | Default | Description                                                                 |
-| ----------------- | ------------------------------------------------------------ | ------- | --------------------------------------------------------------------------- |
-| `title`           | `string`                                                     | —       | Optional label/title displayed above the dropdown.                          |
-| `placeholder`     | `string`                                                     | —       | Placeholder text shown when no item is selected.                            |
-| `data`            | `{ label: string; value: string \| number }[]`               | —       | List of items to show in the dropdown.                                      |
-| `value`           | `{ label: string; value: string \| number } \| null`         | —       | Currently selected item from the data list.                                 |
-| `onChange`        | `(item: { label: string; value: string \| number }) => void` | —       | Callback triggered when a new item is selected.                             |
-| `disable`         | `boolean`                                                    | false   | Disables the dropdown when true.                                            |
-| `errorText`       | `string`                                                     | —       | Optional error message displayed below the dropdown.                        |
-| `renderErrorIcon` | `React.ReactNode`                                            | —       | Optional icon to display beside the error message.                          |
-| `isFloating`      | `boolean`                                                    | false   | Enables floating label behavior (label floats above when focused or filled) |
+| Prop              | Type                                                         | Default | Description                                                                                              |
+| ----------------- | ------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------- |
+| `title`           | `string`                                                     | —       | Optional label/title displayed above the dropdown.                                                       |
+| `placeholder`     | `string`                                                     | —       | Placeholder text shown when no item is selected.                                                         |
+| `data`            | `{ label: string; value: string \| number }[]`               | —       | List of items to show in the dropdown.                                                                   |
+| `value`           | `{ label: string; value: string \| number } \| null`         | —       | Currently selected item from the data list.                                                              |
+| `onChange`        | `(item: { label: string; value: string \| number }) => void` | —       | Callback triggered when a new item is selected.                                                          |
+| `disable`         | `boolean`                                                    | false   | Disables the dropdown when true.                                                                         |
+| `errorText`       | `string`                                                     | —       | Optional error message displayed below the dropdown.                                                     |
+| `renderErrorIcon` | `React.ReactNode`                                            | —       | Optional icon to display beside the error message.                                                       |
+| `isFloating`      | `boolean`                                                    | false   | Enables floating label behavior (label floats above when focused or filled)                              |
+| `mandatory`       | `boolean`                                                    | False   | If true, displays a red (\*) icon next to the title and in the placeholder when `isFloating` is enabled. |
 
 Search Props
 | Prop | Type | Default | Description |
@@ -826,18 +828,19 @@ const [multiselectDropDownValue, setMultiselectDropDownValue] = React.useState<s
 
 Properties used to customize the rendering:
 
-| Prop                   | Type                                 | Default | Description                                                                          |
-| ---------------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------ |
-| `title`                | `string`                             | —       | Optional label/title displayed above the multi-select dropdown.                      |
-| `placeholder`          | `string`                             | —       | Placeholder text shown when no items are selected.                                   |
-| `data`                 | `{ label: string; value: string }[]` | —       | List of options to display in the dropdown. Each item must have `label` and `value`. |
-| `value`                | `string[] \| null`                   | —       | Array of currently selected values.                                                  |
-| `onChange`             | `(items: string[]) => void`          | —       | Callback triggered when the selection changes.                                       |
-| `disable`              | `boolean`                            | false   | Disables the dropdown if set to true.                                                |
-| `errorText`            | `string`                             | —       | Optional error message displayed below the dropdown.                                 |
-| `renderErrorIcon`      | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                       |
-| `isFloating`           | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).         |
-| `isRenderSelectedItem` | `boolean`                            | True    | If true (default), renders custom chips for selected items.                          |
+| Prop                   | Type                                 | Default | Description                                                                                              |
+| ---------------------- | ------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------- |
+| `title`                | `string`                             | —       | Optional label/title displayed above the multi-select dropdown.                                          |
+| `placeholder`          | `string`                             | —       | Placeholder text shown when no items are selected.                                                       |
+| `data`                 | `{ label: string; value: string }[]` | —       | List of options to display in the dropdown. Each item must have `label` and `value`.                     |
+| `value`                | `string[] \| null`                   | —       | Array of currently selected values.                                                                      |
+| `onChange`             | `(items: string[]) => void`          | —       | Callback triggered when the selection changes.                                                           |
+| `disable`              | `boolean`                            | false   | Disables the dropdown if set to true.                                                                    |
+| `errorText`            | `string`                             | —       | Optional error message displayed below the dropdown.                                                     |
+| `renderErrorIcon`      | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                                           |
+| `isFloating`           | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).                             |
+| `isRenderSelectedItem` | `boolean`                            | True    | If true (default), renders custom chips for selected items.                                              |
+| `mandatory`            | `boolean`                            | False   | If true, displays a red (\*) icon next to the title and in the placeholder when `isFloating` is enabled. |
 
 Search Props
 | Prop | Type | Default | Description |

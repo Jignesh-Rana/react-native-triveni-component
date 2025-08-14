@@ -134,10 +134,11 @@ interface CustomMultiSelectDropDownProps {
    */
   dropdownPosition?: 'auto' | 'top' | 'bottom';
   /**
- * Provide a fully custom footer component to show INSIDE the list (after all items).
- * The footer will NOT be filtered out when searching.
- */
+   * Provide a fully custom footer component to show INSIDE the list (after all items).
+   * The footer will NOT be filtered out when searching.
+   */
   renderFooter?: () => React.ReactNode;
+  mandatory?: boolean;
 }
 
 enum CustomMultiSelect {
@@ -238,202 +239,229 @@ function getStyles({
       paddingHorizontal: 24,
       paddingVertical: 12,
     },
+    mandatoryStar: {
+      color: colors.error,
+      marginLeft: 4,
+    },
   });
 }
 
-const CustomMultiSelectDropDown = forwardRef<CustomMultiSelectDropDownRef, CustomMultiSelectDropDownProps>(({
-  title,
-  placeholder,
-  isFloating,
-  data,
-  value = [],
-  errorText,
-  renderErrorIcon,
-  onChange,
-  search = false,
-  searchPlaceholder,
-  disable = false,
-  isAllSelectedEnabled = false,
-  selectAllLabel = 'All',
-  titleTxtStyle,
-  selectedTextStyle,
-  containerStyle,
-  style,
-  isRenderSelectedItem = true,
-  dropdownPosition = 'auto',
-  renderFooter,
-}, ref,) => {
-  const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
-  const styles = getStyles({ colors, fontFamily, fontSizes });
-
-  const [focused, setFocused] = useState(false);
-
-  const shouldFloat = isFloating && (focused || !!value);
-  const dropdownRef = React.useRef<MultiSelectRef>(null);
-
-  useImperativeHandle(ref, () => ({
-    close: () => {
-      dropdownRef.current?.close();
+const CustomMultiSelectDropDown = forwardRef<
+  CustomMultiSelectDropDownRef,
+  CustomMultiSelectDropDownProps
+>(
+  (
+    {
+      title,
+      placeholder,
+      isFloating,
+      data,
+      value = [],
+      errorText,
+      renderErrorIcon,
+      onChange,
+      search = false,
+      searchPlaceholder,
+      disable = false,
+      isAllSelectedEnabled = false,
+      selectAllLabel = 'All',
+      titleTxtStyle,
+      selectedTextStyle,
+      containerStyle,
+      style,
+      isRenderSelectedItem = true,
+      dropdownPosition = 'auto',
+      renderFooter,
+      mandatory = false,
     },
-  }));
+    ref
+  ) => {
+    const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
+    const styles = getStyles({ colors, fontFamily, fontSizes });
 
-  const allValues = data.map((item) => item.value);
-  const isAllSelected =
-    isAllSelectedEnabled &&
-    value &&
-    value?.length > 0 &&
-    allValues?.every((val) => value?.includes(val));
+    const [focused, setFocused] = useState(false);
 
-  const handleSelectAll = () => {
-    if (isAllSelected) {
-      onChange?.([]); // Deselect all
-    } else {
-      onChange?.(allValues); // Select all
-    }
-  };
+    const shouldFloat = isFloating && (focused || !!value);
+    const dropdownRef = React.useRef<MultiSelectRef>(null);
 
-  const baseData = isAllSelectedEnabled
-    ? [{ label: selectAllLabel, value: CustomMultiSelect.selectAll }, ...data]
-    : [...data];
+    useImperativeHandle(ref, () => ({
+      close: () => {
+        dropdownRef.current?.close();
+      },
+    }));
 
-  const dropdownData = renderFooter
-    ? [...baseData, { label: '__FOOTER__', value: FOOTER_ITEM_VALUE }]
-    : baseData;
+    const allValues = data.map((item) => item.value);
+    const isAllSelected =
+      isAllSelectedEnabled &&
+      value &&
+      value?.length > 0 &&
+      allValues?.every((val) => value?.includes(val));
 
-  return (
-    <View style={[styles.containerStyle, containerStyle]}>
-      {title && !isFloating && (
-        <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
-          {title}
-        </CustomText>
-      )}
+    const handleSelectAll = () => {
+      if (isAllSelected) {
+        onChange?.([]); // Deselect all
+      } else {
+        onChange?.(allValues); // Select all
+      }
+    };
 
-      {title && isFloating && shouldFloat && (
-        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
-          {title}
-        </CustomText>
-      )}
-      <MultiSelect
-        style={[
-          styles.dropdown,
-          {
-            borderColor: errorText
-              ? colors.error
-              : focused
-                ? colors.primary
-                : colors.disable,
-          },
-          style,
-        ]}
-        ref={dropdownRef}
-        dropdownPosition={dropdownPosition}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        itemTextStyle={styles.itemTextStyle}
-        data={dropdownData}
-        maxHeight={300}
-        search={search}
-        searchPlaceholder={searchPlaceholder}
-        labelField="label"
-        valueField="value"
-        placeholder={isFloating ? title : placeholder}
-        searchQuery={(keyword: string, labelValue: string) => {
-          if (labelValue === '__FOOTER__') return true;
-          if (!keyword || keyword.trim() === '') return true;
-          return labelValue.toLowerCase().includes(keyword.toLowerCase());
-        }}
-        value={value}
-        onChange={(item) => {
-          if (item.includes(CustomMultiSelect.selectAll)) {
-            handleSelectAll();
-          } else {
-            const filtered = item.filter(
-              (val) => val !== FOOTER_ITEM_VALUE && val !== CustomMultiSelect.selectAll
-            );
-            onChange?.(filtered);
+    const baseData = isAllSelectedEnabled
+      ? [{ label: selectAllLabel, value: CustomMultiSelect.selectAll }, ...data]
+      : [...data];
+
+    const dropdownData = renderFooter
+      ? [...baseData, { label: '__FOOTER__', value: FOOTER_ITEM_VALUE }]
+      : baseData;
+
+    return (
+      <View style={[styles.containerStyle, containerStyle]}>
+        {title && !isFloating && (
+          <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+            {title}
+            {mandatory && (
+              <CustomText size="sm" style={styles.mandatoryStar}>
+                *
+              </CustomText>
+            )}
+          </CustomText>
+        )}
+
+        {title && isFloating && shouldFloat && (
+          <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
+            {title}
+            {mandatory && (
+              <CustomText size="sm" style={styles.mandatoryStar}>
+                *
+              </CustomText>
+            )}
+          </CustomText>
+        )}
+        <MultiSelect
+          style={[
+            styles.dropdown,
+            {
+              borderColor: errorText
+                ? colors.error
+                : focused
+                  ? colors.primary
+                  : colors.disable,
+            },
+            style,
+          ]}
+          ref={dropdownRef}
+          dropdownPosition={dropdownPosition}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
+          inputSearchStyle={styles.inputSearchStyle}
+          iconStyle={styles.iconStyle}
+          itemTextStyle={styles.itemTextStyle}
+          data={dropdownData}
+          maxHeight={300}
+          search={search}
+          searchPlaceholder={searchPlaceholder}
+          labelField="label"
+          valueField="value"
+          placeholder={
+            isFloating
+              ? !shouldFloat
+                ? `${title}${mandatory ? ' *' : ''}`
+                : ''
+              : placeholder
           }
-        }}
-        renderItem={(item) => {
-          if (item.value === FOOTER_ITEM_VALUE) {
+          searchQuery={(keyword: string, labelValue: string) => {
+            if (labelValue === '__FOOTER__') return true;
+            if (!keyword || keyword.trim() === '') return true;
+            return labelValue.toLowerCase().includes(keyword.toLowerCase());
+          }}
+          value={value}
+          onChange={(item) => {
+            if (item.includes(CustomMultiSelect.selectAll)) {
+              handleSelectAll();
+            } else {
+              const filtered = item.filter(
+                (val) =>
+                  val !== FOOTER_ITEM_VALUE &&
+                  val !== CustomMultiSelect.selectAll
+              );
+              onChange?.(filtered);
+            }
+          }}
+          renderItem={(item) => {
+            if (item.value === FOOTER_ITEM_VALUE) {
+              return <>{renderFooter?.()}</>;
+            }
+            if (item.value === CustomMultiSelect.selectAll) {
+              return (
+                <TouchableOpacity
+                  onPress={handleSelectAll}
+                  style={styles.optionStyle}
+                >
+                  <CustomText>{item.label}</CustomText>
+                  {isAllSelected ? <CheckBox /> : <UncheckBox />}
+                </TouchableOpacity>
+              );
+            }
+            const isSelected = value?.includes(item.value);
             return (
-              <>
-                {renderFooter?.()}
-              </>
+              <View style={styles.optionStyle}>
+                <CustomText children={item.label} />
+                {isSelected ? <CheckBox /> : <UncheckBox />}
+              </View>
             );
-          }
-          if (item.value === CustomMultiSelect.selectAll) {
-            return (
-              <TouchableOpacity
-                onPress={handleSelectAll}
-                style={styles.optionStyle}
-              >
-                <CustomText>{item.label}</CustomText>
-                {isAllSelected ? <CheckBox /> : <UncheckBox />}
-              </TouchableOpacity>
-            );
-          }
-          const isSelected = value?.includes(item.value);
-          return (
-            <View style={styles.optionStyle}>
-              <CustomText children={item.label} />
-              {isSelected ? <CheckBox /> : <UncheckBox />}
-            </View>
-          );
-        }}
-        renderSelectedItem={(item, unSelect) => {
-          if (!isRenderSelectedItem) return <></>;
-          if (
-            isAllSelected &&
-            data &&
-            data?.[0] &&
-            item.value === data[0].value
-          ) {
-            // Only render "All" chip once
+          }}
+          renderSelectedItem={(item, unSelect) => {
+            if (!isRenderSelectedItem) return <></>;
+            if (
+              isAllSelected &&
+              data &&
+              data?.[0] &&
+              item.value === data[0].value
+            ) {
+              // Only render "All" chip once
+              return (
+                <TouchableOpacity
+                  style={styles.selectedOption}
+                  onPress={handleSelectAll}
+                >
+                  <CustomText numberOfLines={1} style={styles.selectedTxtStyle}>
+                    {selectAllLabel}
+                  </CustomText>
+                  <CloseRoundIcon />
+                </TouchableOpacity>
+              );
+            }
+            if (isAllSelected) return <></>;
             return (
               <TouchableOpacity
                 style={styles.selectedOption}
-                onPress={handleSelectAll}
+                onPress={() => unSelect && unSelect(item)}
               >
-                <CustomText numberOfLines={1} style={styles.selectedTxtStyle}>
-                  {selectAllLabel}
-                </CustomText>
+                <CustomText
+                  numberOfLines={1}
+                  style={styles.selectedTxtStyle}
+                  children={item.label}
+                />
                 <CloseRoundIcon />
               </TouchableOpacity>
             );
-          }
-          if (isAllSelected) return <></>;
-          return (
-            <TouchableOpacity
-              style={styles.selectedOption}
-              onPress={() => unSelect && unSelect(item)}
-            >
-              <CustomText
-                numberOfLines={1}
-                style={styles.selectedTxtStyle}
-                children={item.label}
-              />
-              <CloseRoundIcon />
-            </TouchableOpacity>
-          );
-        }}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        disable={disable}
-      />
-      {errorText && (
-        <View style={styles.errorContainer}>
-          {renderErrorIcon && (
-            <View style={styles.iconStyle}>{renderErrorIcon}</View>
-          )}
-          <CustomText size="xs" font="Regular" style={styles.errorStyle}>
-            {errorText}
-          </CustomText>
-        </View>
-      )}
-    </View>
-  );
-});
+          }}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          disable={disable}
+        />
+        {errorText && (
+          <View style={styles.errorContainer}>
+            {renderErrorIcon && (
+              <View style={styles.iconStyle}>{renderErrorIcon}</View>
+            )}
+            <CustomText size="xs" font="Regular" style={styles.errorStyle}>
+              {errorText}
+            </CustomText>
+          </View>
+        )}
+      </View>
+    );
+  }
+);
 
 export default CustomMultiSelectDropDown;
