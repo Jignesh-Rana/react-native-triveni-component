@@ -106,6 +106,7 @@ Properties used to customize the rendering:
 | **titleTxtStyle**   | undefine | `TextStyle` | Add additional title text style                                                                                                        |
 | **style**           | undefine | `TextStyle` | Add additional input style                                                                                                             |
 | **onChangeText**    | undefine | `function`  | Callback that is called when the text input's text changes. Changed text is passed as a single string argument to the callback handler |
+| `mandatory`            | `boolean`                            | False | If true, displays a red (*) icon next to the title and in the placeholder when `isFloating` is enabled. |
 
 ## CustomImage Component
 
@@ -769,6 +770,7 @@ Properties used to customize the rendering:
 | `errorText`       | `string`                                                     | —       | Optional error message displayed below the dropdown.                        |
 | `renderErrorIcon` | `React.ReactNode`                                            | —       | Optional icon to display beside the error message.                          |
 | `isFloating`      | `boolean`                                                    | false   | Enables floating label behavior (label floats above when focused or filled) |
+| `mandatory`            | `boolean`                            | False | If true, displays a red (*) icon next to the title and in the placeholder when `isFloating` is enabled. |
 
 Search Props
 | Prop | Type | Default | Description |
@@ -838,6 +840,7 @@ Properties used to customize the rendering:
 | `renderErrorIcon`      | `React.ReactNode`                    | —       | Optional icon shown next to the error message.                                       |
 | `isFloating`           | `boolean`                            | false   | Enables floating label behavior (label floats above when focused or filled).         |
 | `isRenderSelectedItem` | `boolean`                            | True    | If true (default), renders custom chips for selected items.                          |
+| `mandatory`            | `boolean`                            | False | If true, displays a red (*) icon next to the title and in the placeholder when `isFloating` is enabled. |
 
 Search Props
 | Prop | Type | Default | Description |
