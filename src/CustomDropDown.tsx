@@ -112,6 +112,8 @@ interface CustomDropDownProps {
    */
   dropdownPosition?: 'auto' | 'top' | 'bottom';
   mandatory?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 function getStyles({
@@ -201,6 +203,8 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
     style,
     dropdownPosition = 'auto',
     mandatory = false,
+    onFocus,
+    onBlur,
   } = props;
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -208,12 +212,21 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
   // State to track if the dropdown is focused (for styling)
   const [focused, setFocused] = useState(false);
 
-  const shouldFloat = isFloating && (focused || !!value);
+  const shouldFloat = isFloating && (focused || value);
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
       {title && !isFloating && (
-        <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+        <CustomText
+          size="sm"
+          style={[
+            styles.titleTxtStyle,
+            errorText && {
+              color: colors.error,
+            },
+            titleTxtStyle,
+          ]}
+        >
           {title}
           {mandatory && (
             <CustomText size="sm" style={styles.mandatoryStar}>
@@ -224,7 +237,15 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
       )}
 
       {title && isFloating && shouldFloat && (
-        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
+        <CustomText
+          style={[
+            styles.floatingLabel,
+            errorText && {
+              color: colors.error,
+            },
+            titleTxtStyle,
+          ]}
+        >
           {title}
           {mandatory && (
             <CustomText size="sm" style={styles.mandatoryStar}>
@@ -237,7 +258,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
         style={[
           styles.dropdown,
           {
-            borderColor: !!errorText
+            borderColor: errorText
               ? colors.error
               : focused
                 ? colors.primary
@@ -269,10 +290,16 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
           onChange?.(item);
         }}
         renderRightIcon={() => (
-          <DropdownIcon color={!!errorText ? colors.error : colors.gray} />
+          <DropdownIcon color={errorText ? colors.error : colors.gray} />
         )}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onFocus={() => {
+          onFocus?.();
+          setFocused(true);
+        }}
+        onBlur={() => {
+          onBlur?.();
+          setFocused(false);
+        }}
         disable={disable}
       />
       {errorText && (
