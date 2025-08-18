@@ -114,7 +114,16 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
   return (
     <View style={[styles.containerStyle, mainContainer]}>
       {title && !isFloating && (
-        <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+        <CustomText
+          size="sm"
+          style={[
+            styles.titleTxtStyle,
+            errorText && {
+              color: colors.error,
+            },
+            titleTxtStyle,
+          ]}
+        >
           {title}
           {mandatory && (
             <CustomText size="sm" style={styles.mandatoryStar}>
@@ -125,7 +134,15 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
       )}
 
       {title && isFloating && shouldFloat && (
-        <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
+        <CustomText
+          style={[
+            styles.floatingLabel,
+            errorText && {
+              color: colors.error,
+            },
+            titleTxtStyle,
+          ]}
+        >
           {title}
           {mandatory && (
             <CustomText size="sm" style={styles.mandatoryStar}>
