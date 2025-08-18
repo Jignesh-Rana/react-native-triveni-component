@@ -14,6 +14,7 @@ import { MultiSelect } from 'react-native-element-dropdown';
 import { CloseRoundIcon } from './icons/CloseRoundIcon';
 import { CheckBox } from './icons/CheckBox';
 import { UncheckBox } from './icons/UncheckBox';
+import { DropdownIcon } from './icons/DropdownIcon';
 
 /**
  * Props for CustomMultiSelectDropDown component
@@ -139,6 +140,8 @@ interface CustomMultiSelectDropDownProps {
    */
   renderFooter?: () => React.ReactNode;
   mandatory?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 enum CustomMultiSelect {
@@ -273,6 +276,8 @@ const CustomMultiSelectDropDown = forwardRef<
       dropdownPosition = 'auto',
       renderFooter,
       mandatory = false,
+      onFocus,
+      onBlur,
     },
     ref
   ) => {
@@ -316,7 +321,16 @@ const CustomMultiSelectDropDown = forwardRef<
     return (
       <View style={[styles.containerStyle, containerStyle]}>
         {title && !isFloating && (
-          <CustomText size="sm" style={[styles.titleTxtStyle, titleTxtStyle]}>
+          <CustomText
+            size="sm"
+            style={[
+              styles.titleTxtStyle,
+              errorText && {
+                color: colors.error,
+              },
+              titleTxtStyle,
+            ]}
+          >
             {title}
             {mandatory && (
               <CustomText size="sm" style={styles.mandatoryStar}>
@@ -327,7 +341,15 @@ const CustomMultiSelectDropDown = forwardRef<
         )}
 
         {title && isFloating && shouldFloat && (
-          <CustomText style={[styles.floatingLabel, titleTxtStyle]}>
+          <CustomText
+            style={[
+              styles.floatingLabel,
+              errorText && {
+                color: colors.error,
+              },
+              titleTxtStyle,
+            ]}
+          >
             {title}
             {mandatory && (
               <CustomText size="sm" style={styles.mandatoryStar}>
@@ -445,8 +467,17 @@ const CustomMultiSelectDropDown = forwardRef<
               </TouchableOpacity>
             );
           }}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+          renderRightIcon={() => (
+            <DropdownIcon color={errorText ? colors.error : colors.gray} />
+          )}
+          onFocus={() => {
+            onFocus?.();
+            setFocused(true);
+          }}
+          onBlur={() => {
+            onBlur?.();
+            setFocused(false);
+          }}
           disable={disable}
         />
         {errorText && (
