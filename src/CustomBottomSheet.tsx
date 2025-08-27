@@ -152,3 +152,4 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
 };
 
 export default CustomBottomSheet;
+export type { CustomBottomSheetProps };

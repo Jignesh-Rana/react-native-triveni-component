@@ -53,3 +53,4 @@ const CustomTag: React.FC<CustomTagProps> = (props) => {
 };
 
 export default CustomTag;
+export type { CustomTagProps };

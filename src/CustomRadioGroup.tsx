@@ -140,3 +140,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomRadioGroup;
+export type { CustomRadioGroupProps };

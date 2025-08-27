@@ -16,7 +16,7 @@ import CustomText from './CustomText';
 import { DownArrowIcon } from './icons/DownArrowIcon';
 import { UpArrowIcon } from './icons/UpArrowIcon';
 
-export interface CustomAccordionProps {
+interface CustomAccordionProps {
   title: string;
   children: React.ReactNode;
   initiallyOpen?: boolean;
@@ -115,3 +115,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomAccordion;
+export type { CustomAccordionProps };

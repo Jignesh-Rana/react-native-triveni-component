@@ -496,3 +496,4 @@ const CustomMultiSelectDropDown = forwardRef<
 );
 
 export default CustomMultiSelectDropDown;
+export type { CustomMultiSelectDropDownProps };

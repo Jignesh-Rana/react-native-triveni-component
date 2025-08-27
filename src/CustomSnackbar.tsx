@@ -9,7 +9,7 @@ import {
 import { getCustomThemeConfig } from './Config';
 import CustomText from './CustomText';
 
-export interface CustomSnackbarProps {
+interface CustomSnackbarProps {
   visible: boolean;
   message: string;
   duration?: number;
@@ -104,3 +104,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomSnackbar;
+export type { CustomSnackbarProps };

@@ -57,3 +57,4 @@ const CustomLoader: React.FC<LoaderProps> = (props) => {
   );
 };
 export default CustomLoader;
+export type { LoaderProps };
