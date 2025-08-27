@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { getCustomThemeConfig } from './Config';
 
-export interface CustomModalProps extends Omit<ModalProps, 'transparent'> {
+interface CustomModalProps extends Omit<ModalProps, 'transparent'> {
   visible: boolean;
   onClose: () => void;
   children?: React.ReactNode;
@@ -72,3 +72,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomModal;
+export type { CustomModalProps };

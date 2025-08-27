@@ -54,3 +54,4 @@ const TextWithImage: React.FC<TextWithImageProps> = ({
 };
 
 export default TextWithImage;
+export type { TextWithImageProps };

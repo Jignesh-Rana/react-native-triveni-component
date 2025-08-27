@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { getCustomThemeConfig } from './Config';
 
-export interface CustomCardProps extends ViewProps {
+interface CustomCardProps extends ViewProps {
   children: React.ReactNode;
   elevation?: number;
   padding?: 'none' | 'small' | 'medium' | 'large';
@@ -60,3 +60,4 @@ const CustomCard: React.FC<CustomCardProps> = ({
 };
 
 export default CustomCard;
+export type { CustomCardProps };

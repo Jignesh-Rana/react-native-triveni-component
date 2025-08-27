@@ -91,3 +91,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomToggleSwitch;
+export type { CustomToggleSwitchProps };

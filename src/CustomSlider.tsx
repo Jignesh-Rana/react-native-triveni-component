@@ -111,3 +111,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomSlider;
+export type { CustomSliderProps };

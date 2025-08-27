@@ -38,3 +38,4 @@ const CustomDivider: React.FC<CustomDividerProps> = ({
 };
 
 export default CustomDivider;
+export type { CustomDividerProps };
