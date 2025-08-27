@@ -317,3 +317,4 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
 };
 
 export default CustomDropDown;
+export type { CustomDropDownProps };

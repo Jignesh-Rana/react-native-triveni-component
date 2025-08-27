@@ -83,3 +83,4 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 };
 
 export default CustomCheckbox;
+export type { CustomCheckboxProps };

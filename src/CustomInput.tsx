@@ -211,3 +211,4 @@ const CustomInput: React.FC<CustomTextInputProps> = (props) => {
 };
 
 export default CustomInput;
+export type { CustomTextInputProps };
