@@ -102,6 +102,7 @@ interface CustomDropDownProps {
    * Custom styles for the dropdown itself (e.g., border, padding).
    */
   style?: StyleProp<ViewStyle>;
+  placeholderStyle?: StyleProp<TextStyle>;
 
   /**
    * Determines the position of the dropdown menu.
@@ -205,6 +206,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
     mandatory = false,
     onFocus,
     onBlur,
+    placeholderStyle,
   } = props;
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -266,7 +268,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
           },
           style,
         ]}
-        placeholderStyle={styles.placeholderStyle}
+        placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
         selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
         inputSearchStyle={styles.inputSearchStyle}
         iconStyle={styles.iconStyle}
