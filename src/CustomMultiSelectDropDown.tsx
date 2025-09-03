@@ -122,6 +122,7 @@ interface CustomMultiSelectDropDownProps {
    * Custom styles for the dropdown itself (e.g., padding, border).
    */
   style?: StyleProp<ViewStyle>;
+  placeholderStyle?: StyleProp<TextStyle>;
   /**
    * If true (default), renders custom chips for selected items.
    */
@@ -278,6 +279,7 @@ const CustomMultiSelectDropDown = forwardRef<
       mandatory = false,
       onFocus,
       onBlur,
+      placeholderStyle,
     },
     ref
   ) => {
@@ -372,7 +374,7 @@ const CustomMultiSelectDropDown = forwardRef<
           ]}
           ref={dropdownRef}
           dropdownPosition={dropdownPosition}
-          placeholderStyle={styles.placeholderStyle}
+          placeholderStyle={[styles.placeholderStyle, placeholderStyle]}
           selectedTextStyle={[styles.selectedTextStyle, selectedTextStyle]}
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
