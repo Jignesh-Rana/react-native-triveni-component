@@ -18,6 +18,14 @@ npm install react-native-device-info
 npm install react-native-fast-image
 ```
 
+```sh
+npm install @gorhom/bottom-sheet
+```
+
+```sh
+npm install @react-native-community/slider
+```
+
 ### ios
 
 ```sh
@@ -40,17 +48,19 @@ import { CustomButton } from 'react-native-triveni-component';
 
 Properties used to customize the rendering:
 
-| Prop               | Default | Type        | Description                                                |
-| ------------------ | ------- | ----------- | ---------------------------------------------------------- |
-| **title**          | -       | `string`    | To define button title                                     |
-| **variant**        | default | `enum`      | Display the button as per the variant, default and border  |
-| **radius**         | round   | `enum`      | Radius of button, total radius type none, normal and round |
-| **icon**           | -       | `ReactNode` | Display the icon with title                                |
-| **btnBgColor**     | primary | `enum`      | background color of button                                 |
-| **isBottomMargin** | false   | `boolean`   | Add bottom marge                                           |
-| **btnTitleStyle**  | -       | `object`    | Add additional button title style                          |
-| **style**          | -       | `object`    | Add additional button style                                |
-| **onPress**        | -       | `function`  | onPress of button                                          |
+| Prop                | Default | Type        | Description                                                                                 |
+| ------------------- | ------- | ----------- | ------------------------------------------------------------------------------------------- |
+| **title**           | -       | `string`    | To define button title                                                                      |
+| **variant**         | default | `enum`      | Display the button as per the variant, default and border                                   |
+| **radius**          | round   | `enum`      | Radius of button, total radius type none, normal and round                                  |
+| **icon**            | -       | `ReactNode` | Display the icon with title                                                                 |
+| **btnBgColor**      | primary | `enum`      | background color of button                                                                  |
+| **isBottomMargin**  | false   | `boolean`   | Add bottom marge                                                                            |
+| **btnTitleStyle**   | -       | `object`    | Add additional button title style                                                           |
+| **style**           | -       | `object`    | Add additional button style                                                                 |
+| **onPress**         | -       | `function`  | onPress of button                                                                           |
+| **titleTextSize**   | -       | `enum`      | Adjust the title text size. like "xxs", "xs", "base", "sm", "md", "xl", "xl2", "xl3", "xl4" |
+| **titleFontFamily** | -       | `enum`      | Adjust the title text font family. like "Bold", "SemiBold", "Medium", "Regular"             |
 
 ## CustomText Component
 

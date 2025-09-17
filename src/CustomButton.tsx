@@ -21,6 +21,8 @@ interface CustomButtonProps extends TouchableOpacityProps {
   icon?: React.ReactNode;
   isBottomMargin?: boolean;
   radius?: 'normal' | 'round' | 'none';
+  titleTextSize?: keyof ReturnType<typeof getCustomThemeConfig>['fontSizes'];
+  titleFontFamily?: keyof ReturnType<typeof getCustomThemeConfig>['fontFamily'];
 }
 
 const getStyles = ({ colors }: ReturnType<typeof getCustomThemeConfig>) =>
@@ -72,6 +74,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   title,
   variant = 'default',
   btnBgColor = 'primary',
+  titleTextSize = 'md',
+  titleFontFamily = 'SemiBold',
   disabled,
   style,
   btnTitleStyle,
@@ -104,8 +108,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       {icon && <View style={styles.leftIcon}>{icon}</View>}
       {title && (
         <CustomText
-          size="md"
-          font="SemiBold"
+          size={titleTextSize}
+          font={titleFontFamily}
           style={[
             styles.fixTxtStyle,
             disabled && styles.disabledTextStyle,
