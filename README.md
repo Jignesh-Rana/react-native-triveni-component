@@ -32,6 +32,61 @@ npm install @react-native-community/slider
 npx pod-install
 ```
 
+## Theme Configuration
+
+This project contains a customizable theme configuration for font sizes, font families, and colors. It allows you to easily maintain consistent styling across your application.
+
+```js
+import { fontSizes, fontFamily, colorsLight } from './theme';
+
+configureTheme({
+  fontSizes: fontSizes,
+  fontFamily: {
+    Regular: fontFamily.Regular,
+    Bold: fontFamily.Bold,
+    Medium: fontFamily.Medium,
+    SemiBold: fontFamily.SemiBold,
+  },
+  colors: {
+    black: colorsLight.black,
+    white: colorsLight.white,
+    disable: colorsLight.gray200,
+    primary: colorsLight.primary,
+    secondPrimary: colorsLight.secondary,
+    gray: colorsLight.gray400,
+    error: colorsLight.red,
+    transparent: colorsLight.transparent,
+  },
+});
+```
+
+## FontSize
+
+```js
+export const fontSizes = {
+  xxs: 10,
+  xs: 12,
+  base: 14,
+  sm: 16,
+  md: 18,
+  xl: 20,
+  xl2: 24,
+  xl3: 40,
+  xl4: 48,
+};
+```
+
+## FontFamily
+
+```js
+export const fontFamily = {
+  Bold: 'Manrope-Bold',
+  SemiBold: 'Manrope-SemiBold',
+  Medium: 'Manrope-Medium',
+  Regular: 'Manrope-Regular',
+};
+```
+
 ## CustomButton Component
 
 ```js
