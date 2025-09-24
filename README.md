@@ -36,6 +36,11 @@ npx pod-install
 
 This project contains a customizable theme configuration for font sizes, font families, and colors. It allows you to easily maintain consistent styling across your application.
 
+## How to add custom font into you project
+
+Follow this link
+[Link Text](https://medium.com/@noamkurtzer/custom-fonts-in-react-native-app-7d07310f75e8)
+
 ```js
 import { fontSizes, fontFamily, colorsLight } from './theme';
 
@@ -62,6 +67,8 @@ configureTheme({
 
 ## FontSize
 
+Add the following code to the font file. If you are using the boilerplate, you can add it to the fonts.ts file. If not, you can add it to any other file.
+
 ```js
 export const fontSizes = {
   xxs: 10,
@@ -77,6 +84,8 @@ export const fontSizes = {
 ```
 
 ## FontFamily
+
+Add the following code to the font file. If you are using the boilerplate, you can add it to the fonts.ts file. If not, you can add it to any other file.
 
 ```js
 export const fontFamily = {
