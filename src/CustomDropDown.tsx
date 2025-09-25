@@ -115,6 +115,10 @@ interface CustomDropDownProps {
   mandatory?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
+  renderItem?: (
+    item: { label: string; value: string | number },
+    selected?: boolean
+  ) => React.ReactElement | null;
 }
 
 function getStyles({
@@ -207,6 +211,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
     onFocus,
     onBlur,
     placeholderStyle,
+    renderItem,
   } = props;
   const { colors, fontFamily, fontSizes } = getCustomThemeConfig();
   const styles = getStyles({ colors, fontFamily, fontSizes });
@@ -303,6 +308,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = (props) => {
           setFocused(false);
         }}
         disable={disable}
+        renderItem={renderItem}
       />
       {errorText && (
         <View style={styles.errorContainer}>
