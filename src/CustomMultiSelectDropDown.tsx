@@ -247,6 +247,9 @@ function getStyles({
       color: colors.error,
       marginLeft: 4,
     },
+    selectedItemTextStyle: {
+      flex: 1,
+    },
   });
 }
 
@@ -420,7 +423,12 @@ const CustomMultiSelectDropDown = forwardRef<
                   onPress={handleSelectAll}
                   style={styles.optionStyle}
                 >
-                  <CustomText>{item.label}</CustomText>
+                  <CustomText
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                    style={styles.selectedItemTextStyle}
+                    children={item.label}
+                  />
                   {isAllSelected ? <CheckBox /> : <UncheckBox />}
                 </TouchableOpacity>
               );
@@ -428,7 +436,12 @@ const CustomMultiSelectDropDown = forwardRef<
             const isSelected = value?.includes(item.value);
             return (
               <View style={styles.optionStyle}>
-                <CustomText children={item.label} />
+                <CustomText
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={styles.selectedItemTextStyle}
+                  children={item.label}
+                />
                 {isSelected ? <CheckBox /> : <UncheckBox />}
               </View>
             );
